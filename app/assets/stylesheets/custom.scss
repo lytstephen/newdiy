@@ -1,0 +1,86 @@
+.navbar-brand {
+	padding:5px 20px;
+}
+
+/* sticky footer */
+
+html, body {
+	height: 100%;
+}
+
+#wrap {
+	min-height: 100%;
+	margin-bottom: -57px;
+}
+
+#content {
+	margin-bottom:87px;
+}
+
+#footer {
+	background-color: #508EC7;
+}
+
+/* end sticky footer */
+
+h1, h2, h3, h4, h5, h6 {
+	color: #508EC7;
+}
+
+#footer #copyright {
+	padding:20px 0;
+	color: white;
+	font-size:12px;
+}
+
+.jumbotron {
+		text-align: center;
+		height:400px;
+    background-image: url(/assets/banner.png);
+    margin: 0px;
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    letter-spacing: 5px;
+}
+
+.jumbo-wrap {
+	padding:6px;
+	margin-bottom: 20px;
+	border: 2px solid #bbb;
+	    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+}
+
+.jumbotron .call-to-action {
+	margin: 50px 0;
+	line-height: 50px;
+	color: white;
+}
+
+.jumbotron p {
+	margin: 60px 0;
+}
+
+.btn-xlarge {
+    padding: 18px 28px;
+    font-size: 22px; //change this to your desired size
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
