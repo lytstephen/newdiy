@@ -1,1 +1,82 @@
-Showing a user
+<% @page_title = 'ADMIN - DETAILS USER #' + @user.id.to_s %>
+
+<%= render 'side_nav' %>
+
+<div class="well col-md-9 user-details">
+	<div class="row">	
+		<section class="col-md-4 text-center">
+			<%= link_to 'View User Courses', '#', class: 'btn btn-primary' %>
+		</section>
+		<section class="col-md-4 text-center">
+			<%= link_to 'View User Purchases', '#', class: 'btn btn-primary' %>
+		</section>
+		<section class="col-md-4 text-center">
+			<%= link_to 'View User Sales Orders', '#', class: 'btn btn-primary' %>
+		</section>		
+	</div>
+
+	<div class="row">
+		<section class="col-md-12">
+			<table class="table table-striped">
+				<tr>
+					<th colspan="2">First Name:</td>
+					<th colspan="2">Phone:</td>
+				</tr>
+				<tr>
+					<td colspan="2"><%= @user.first_name %></td>
+					<td colspan="2"><%= @user.phone %></td>
+				</tr>
+				<tr>
+					<th colspan="2">Last Name:</td>
+					<th colspan="2">Email Address:</td>
+				</tr>
+				<tr>
+					<td colspan="2"><%= @user.last_name %></td>
+					<td colspan="2"><%= @user.email %></td>
+				</tr>
+				<tr>
+					<th colspan="2">Shipping Address:</td>
+					<th colspan="2">Billing Address:</td>
+				</tr>
+				<tr>
+					<td colspan="2"><%= @user.shipping_add1 %></td>
+					<td colspan="2"><%= @user.billing_add1 %></td>
+				</tr>
+				<tr>
+					<td colspan="2"><%= @user.shipping_add2 %></td>
+					<td colspan="2"><%= @user.billing_add2 %></td>
+				</tr>
+				<tr>
+					<th colspan="2">Town/City</td>
+					<th colspan="2">Town/City</td>
+				</tr>
+				<tr>
+					<td colspan="2"><%= @user.shipping_city %></td>
+					<td colspan="2"><%= @user.billing_city %></td>
+				</tr>
+				<tr>
+					<th>State</td>
+					<th>Zip</th>
+					<th>State</td>
+					<th>Zip</th>
+				</tr>
+				<tr>
+					<td><%= @user.shipping_state %></td>
+					<td><%= @user.shipping_zip %></td>
+					<td><%= @user.billing_state %></td>
+					<td><%= @user.billing_zip %></td>
+				</tr>
+				<tr>
+					<th colspan="2">Country:</td>
+					<th colspan="2">Country:</td>
+				</tr>
+				<tr>
+					<td colspan="2"><%= @user.shipping_country %></td>
+					<td colspan="2"><%= @user.billing_country %></td>
+				</tr>
+			</table>
+			<%= link_to 'Edit Account', edit_user_path(@user), class: 'btn btn-primary' %>
+		</section>
+	</div>
+
+</div>

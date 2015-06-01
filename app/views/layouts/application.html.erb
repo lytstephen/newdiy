@@ -10,7 +10,8 @@
 	
 	<div class="container" id="wrap">
 
-		<div id="content">
+		<section id="content">
+
 			<div class="row">&nbsp;</div>
 
 			<%= render 'layouts/navigation' %>
@@ -20,7 +21,10 @@
 			<%= render 'layouts/messages' %>
 
 			<%= yield %>
-		</div>
+
+			<div style="clear:both"></div>
+
+		</section>
 		
 	</div>
 
