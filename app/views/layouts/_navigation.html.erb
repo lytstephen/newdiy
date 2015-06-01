@@ -8,13 +8,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><%= image_tag('logo.png', size: '80x40') %></a>
+      <a class="navbar-brand" href="/"><%= image_tag('logo.png', size: '80x40') %></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
         <li><a href="#">Courses</a></li>
         <li><a href="#">FAQ</a></li>
         <li><a href="#">About</a></li>
@@ -22,9 +22,13 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">View Cart</a></li>
-        <li><a href="#">Login</a></li>
-        <li><a href="#">Signup</a></li>
+        <%= link_to 'View Cart (4)', '#', class: 'btn btn-primary btn-sm' %>
+        <!-- if not logged in -->
+        <%= link_to 'Log In', new_user_session_path, class: 'btn btn-primary btn-sm' %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-sm' %>
+        <!-- if logged in -->
+
+        <!-- end if -->
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
