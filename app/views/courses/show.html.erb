@@ -1,0 +1,89 @@
+<% @page_title = @course.title %>
+
+<% if user_signed_in? %>
+	<% if @course.user.id === current_user.id %>
+		<section class="row text-center">
+			<%= link_to 'Edit Course', edit_course_path(@course), class: 'btn btn-primary btn-lg'  %>
+		</section>
+		<section class="row">
+			<hr/>
+		</section>
+	<% end %>
+<% end %>
+
+<section class="row">
+	<div class="col-md-7">
+
+		<section class="row text-center embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item"  src="<%= @course.video_link %>"></iframe>
+		</section>
+
+		<section class="row">&nbsp;</section>
+
+		<section class="row">
+			<div class="col-md-4 text-center">
+				<img src="http://placehold.it/180x180" class="img-thumbnail center" />
+			</div>
+			<div class="col-md-4 text-center">
+				<img src="http://placehold.it/180x180" class="img-thumbnail center" />
+			</div>
+			<div class="col-md-4 text-center">
+				<img src="http://placehold.it/180x180" class="img-thumbnail center" />
+			</div>
+		</section>
+
+	</div>
+
+	<div class="col-md-5">
+
+		<section class="well">
+			<h5>MATERIALS NEEDED:</h5>
+			<hr/>
+			<section class="materials_needed">
+				<%= simple_format @course.materials %>
+			</section>
+			<h5>PRICE</h5>
+			<hr/>
+			<p>VIDEO: $<%= @course.video_cost %></p>
+			<p>MATERIALS: $<%= @course.material_cost %></p>
+		</section>
+
+		<div class="row">
+			<section class="col-md-4 col-md-offset-1">
+				<h5>BUY VIDEO</h5>
+			</section>
+			<section class="col-md-4 col-md-offset-1">
+				<h5>BUY MATERIALS</h5>
+			</section>
+		</div>
+
+	</div>
+</section>
+
+<div class="row">&nbsp;</div>
+
+<section class="row">
+	<h3 class="text-center">SIMILAR IDEAS</h3>
+	<hr/>
+	<% (1..4).each do %>
+		<div class="col-md-3 text-center">
+			<img src="http://placehold.it/230x230" alt="" class="img img-thumbnail">
+			<h5>Father's Day Self Made ...</h5>
+			<p>By Stephen Leung</p>
+		</div>
+	<% end %>
+</section>
+
+<section class="row"><hr/></section>
+
+
+
+
+
+
+
+
+
+
+
+

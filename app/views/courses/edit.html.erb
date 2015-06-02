@@ -1,0 +1,59 @@
+<% @page_title = 'EDIT COURSE # ' + @course.id.to_s %>
+
+<%= render 'users/user_side_nav' %>
+
+<div class="well col-md-9">
+
+	<%= render 'layouts/errors', obj: @course %>
+	
+  <%= form_for(@course, html: {class: "form-group"}) do |f| %>
+
+    <div class="field form-group">
+      <%= f.label :title, 'Course Title' %><br />
+      <%= f.text_field :title, autofocus: true, class: 'form-control'%>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :description, 'Course Description' %><br />
+      <%= f.text_area :description, rows: 2, autofocus: true, class: 'form-control'%>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :video_link, 'Video Link' %><br />
+      <%= f.text_field :video_link, autofocus: true, class: 'form-control'%>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :materials, 'List of Materials' %><br />
+      <%= f.text_area :materials, rows: 8, autofocus: true, class: 'form-control'%>
+    </div>
+		
+		<div class="row">
+	    <div class="field form-group col-md-6">
+	      <%= f.label :video_cost, 'Video Cost' %><br />
+	      <%= f.text_field :video_cost, rows: 8, autofocus: true, class: 'form-control'%>
+	    </div>
+
+	    <div class="field form-group col-md-6">
+	      <%= f.label :material_cost, 'Materials Cost' %><br />
+	      <%= f.text_field :material_cost, rows: 8, autofocus: true, class: 'form-control'%>
+	    </div>
+	  </div>
+		
+		<div class="row">
+			<section class="col-md-6">
+	    	upload featured image
+	    </section>
+
+	    <section class="col-md-6">
+	    	upload image1<br/>
+	    	upload image2
+	    </section>
+		</div>
+
+    <div class="actions">
+      <%= f.submit "Update Course", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+</div>

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'categories/index'
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
@@ -7,14 +6,15 @@ Rails.application.routes.draw do
 
   resources :users
 
+  get 'categories/index'
+
   resources :categories
 
-  # You can have the root of your site routed with "root"
+  resources :courses
+
   root 'pages#index'
 
-  # Example of regular route:
   get 'admin' => 'pages#admin'
-  #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

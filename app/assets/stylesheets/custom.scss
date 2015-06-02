@@ -1,3 +1,83 @@
+/*Mixing Devise with Bootstrap3*/
+
+.alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: center;
+ }
+
+.alert-alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: center;
+ }
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: center;
+ }
+
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: center;
+ }
+
+.alert ul {
+    list-style-type:none;
+}
+
+/*END */
+
+/*CATEGORIES*/
+
+.categories {
+
+  td.id {
+      width:15%;
+  }
+
+  td.create_date {
+      width:20%;
+  }
+
+  td.category_name {
+      width:35%;
+  }
+
+  td.actions {
+      width:30%;
+  }
+
+  .btn {
+      margin: 0 5px 5px 0;
+  }
+  
+}
+
+/*END*/
+
+/*COURSES*/
+
+.learn_this {
+    letter-spacing:1px;
+}
+
+.well.course {
+    margin-bottom: 30px;
+}
+
+.course p.author {
+    margin-bottom: 20px;
+}
+
+/*END*/
+
 .navbar-brand {
 	padding:5px 20px;
 }
@@ -83,60 +163,8 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: center;
 }
 
-hr {
-	margin: 10px 0 30px;
-}
-
-/* flash */
-
-    .alert-error {
-        background-color: #f2dede;
-        border-color: #eed3d7;
-        color: #b94a48;
-        text-align: center;
-     }
-
-    .alert-alert {
-        background-color: #f2dede;
-        border-color: #eed3d7;
-        color: #b94a48;
-        text-align: center;
-     }
-
-    .alert-success {
-        background-color: #dff0d8;
-        border-color: #d6e9c6;
-        color: #468847;
-        text-align: center;
-     }
-
-    .alert-notice {
-        background-color: #dff0d8;
-        border-color: #d6e9c6;
-        color: #468847;
-        text-align: center;
-     }
-
-    .alert ul {
-    	list-style-type:none;
-    }
-
-/* End flash */
-
 .address1 {
     margin-bottom: 5px;
-}
-
-.state {
-    width:45%;
-    margin-right:10%;
-    float:left;
-}
-
-.zip {
-    width:45%;
-    float:left;
-    clear:right;
 }
 
 .user-details table td {
@@ -148,27 +176,8 @@ hr {
     margin: 0 0 30px 0;
 }
 
-
-.categories {
-
-    td.id {
-        width:15%;
-    }
-
-    td.create_date {
-        width:20%;
-    }
-
-    td.category_name {
-        width:35%;
-    }
-
-    td.actions {
-        width:30%;
-    }
-
-    .btn {
-        margin: 0 5px 5px 0;
-    }
+.materials_needed {
+  height: 180px;
+  overflow: auto;
 }
 

@@ -1,10 +1,10 @@
 <% @page_title = 'ADMIN - UPDATE USER #' + @user.id.to_s %>
 
-<%= render 'side_nav' %>
+<%= render 'admin_side_nav' %>
 
 <div class="well col-md-9">
 
-	<%= form_for @user, html: {method: 'put', class: "form-group"} do |f| %>
+	<%= form_for @user, html: {method: 'put', class: "user form-group"} do |f| %>
 
 	<%= render 'layouts/errors', obj: @user %>
 		
@@ -34,16 +34,18 @@
 	      <%= f.label :shipping_city, 'Town/City' %><br />
 	      <%= f.text_field :shipping_city, autofocus: true, class: 'form-control'%>
 	    </div>
+			
+			<div class="row">
+	    	<section class="field form-group col-md-6">
+		      <%= f.label :shipping_state, 'State' %><br />
+		      <%= f.text_field :shipping_state, autofocus: true, class: 'form-control'%>
+	    	</section>
 
-    	<div class="field state form-group">
-	      <%= f.label :shipping_state, 'State' %><br />
-	      <%= f.text_field :shipping_state, autofocus: true, class: 'form-control'%>
-    	</div>
-
-    	<div class="field zip form-group">
-	      <%= f.label :shipping_zip, 'Zip' %><br />
-	      <%= f.text_field :shipping_zip, autofocus: true, class: 'form-control'%>
-    	</div>
+	    	<section class="field form-group col-md-6">
+		      <%= f.label :shipping_zip, 'Zip' %><br />
+		      <%= f.text_field :shipping_zip, autofocus: true, class: 'form-control'%>
+	    	</section>
+	    </div>
 
     	<div class="field form-group">
 	      <%= f.label :shipping_country, 'Country' %><br />
@@ -78,16 +80,18 @@
 	      <%= f.label :billing_city, 'Town/City' %><br />
 	      <%= f.text_field :billing_city, autofocus: true, class: 'form-control'%>
 	    </div>
+			
+			<div class="row">
+	    	<section class="field form-group col-md-6">
+		      <%= f.label :billing_state, 'State' %><br />
+		      <%= f.text_field :billing_state, autofocus: true, class: 'form-control'%>
+	    	</section>
 
-    	<div class="field state form-group">
-	      <%= f.label :billing_state, 'State' %><br />
-	      <%= f.text_field :billing_state, autofocus: true, class: 'form-control'%>
-    	</div>
-
-    	<div class="field zip form-group">
-	      <%= f.label :billing_zip, 'Zip' %><br />
-	      <%= f.text_field :billing_zip, autofocus: true, class: 'form-control'%>
-    	</div>
+	    	<section class="field form-group col-md-6">
+		      <%= f.label :billing_zip, 'Zip' %><br />
+		      <%= f.text_field :billing_zip, autofocus: true, class: 'form-control'%>
+	    	</section>
+	    </div>
 
     	<div class="field form-group">
 	      <%= f.label :billing_country, 'Country' %><br />
@@ -96,11 +100,8 @@
 
 		</section>
 
-
-  	<div style="margin:50px; clear:both"></div>
-
-    <div class="actions">
-      <%= f.submit "Update Account", class: 'btn btn-primary' %>
+    <div class="actions col-md-12">
+      <%= f.submit "Update Account", class: 'btn btn-primary', style: 'margin: 20px 0' %>
     </div>
 
 	<% end %>

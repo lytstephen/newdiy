@@ -1,0 +1,9 @@
+<div class="col-md-3">
+	<section class="well">
+		<ul class="nav nav-pills nav-stacked">
+			<% @categories.each do |category| %>
+		  	<li role="presentation"><a href="#"><%= category.name %></a></li>
+			<% end %>
+		</ul>
+	</section>
+</div>
