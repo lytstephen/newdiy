@@ -149,4 +149,26 @@ hr {
 }
 
 
+.categories {
+
+    td.id {
+        width:15%;
+    }
+
+    td.create_date {
+        width:20%;
+    }
+
+    td.category_name {
+        width:35%;
+    }
+
+    td.actions {
+        width:30%;
+    }
+
+    .btn {
+        margin: 0 5px 5px 0;
+    }
+}
 

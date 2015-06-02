@@ -1,0 +1,16 @@
+<% @page_title = 'ADMIN - UPDATE CATEGORY: ' + @category.name %>
+
+<%= render 'users/side_nav' %>
+
+<div class="well col-md-9">
+
+	<%= form_for @category, html: {class: 'form-group col-md-6'} do |f| %>
+		<div class="form-group">
+			<%= f.label :name, 'Name' %>
+	  	<%= f.text_field :name, autofocus: true, class: 'form-control' %>
+		</div>
+	  
+	  <%= f.submit 'Update', class: 'btn btn-primary' %>
+	<% end %>
+	
+</div>

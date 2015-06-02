@@ -16,5 +16,7 @@ class AddColumnsToUsers < ActiveRecord::Migration
     add_column :users, :billing_state, :string
     add_column :users, :billing_zip, :string
     add_column :users, :billing_country, :string
+    add_column :users, :active, :boolean, default: true
+    add_column :users, :billing_same, :boolean, default: false
   end
 end
