@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    
+    if current_user.admin === true
+      request.env['omniauth.origin'] || admin_path || root_path
+    else
+      request.env['omniauth.origin'] || dashboard_users_path || root_path
+    end
   end
 
   protected

@@ -24,7 +24,7 @@
       <ul class="nav navbar-nav navbar-right">
         <%= link_to 'View Cart (4)', '#', class: 'btn btn-primary btn-sm' %>
         <% if user_signed_in? %>
-          <%= link_to 'User Dashboard', '#', class: 'btn btn-primary btn-sm' %>
+          <%= link_to 'User Dashboard', dashboard_users_path, class: 'btn btn-primary btn-sm' %>
           <%= link_to 'Sign Out', destroy_user_session_path, class: 'btn btn-primary btn-sm' %>
         <% else %>
           <%= link_to 'Log In', new_user_session_path, class: 'btn btn-primary btn-sm' %>

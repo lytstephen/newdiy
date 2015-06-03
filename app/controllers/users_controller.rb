@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def index
-    @users = User.all
+    @users = User.all.order('created_at DESC')
   end
 
   def show
@@ -20,6 +20,10 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def dashboard
+    @courses = current_user.courses.order('created_at DESC').take(3)
   end
 
   private
