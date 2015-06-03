@@ -2,35 +2,34 @@
 
 <%= render 'admin_side_nav' %>
 
-<div class="col-md-9">
-	<section class="well">
-		<table class="table">
+<section class="well col-md-9">
+	<table class="table table-striped">
+		<tr>
+			<th>User #</th>
+			<th>Join Date</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Earnings</th>
+			<th>Purchases</th>
+			<th>&nbsp;</th>
+		</tr>
+		<% @users.each do |user| %>			
 			<tr>
-				<th>User #</th>
-				<th>Join Date</th>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Earnings</th>
-				<th>Purchases</th>
-				<th>&nbsp;</th>
+				<td><%= user.id %></td>
+				<td><%= user.created_at.to_date %></td>
+				<td><%= user.first_name %></td>
+				<td><%= user.last_name %></td>
+				<td>$1000</td>
+				<td>$1000</td>
+				<td>
+					<%= link_to 'Details', user_path(user), class: 'btn btn-primary btn-sm' %>&nbsp;
+					<%= link_to 'Edit', edit_user_path(user), class: 'btn btn-primary btn-sm' %>
+				</td>
 			</tr>
-			<% @users.each do |user| %>			
-				<tr>
-					<td><%= user.id %></td>
-					<td><%= user.created_at.to_date %></td>
-					<td><%= user.first_name %></td>
-					<td><%= user.last_name %></td>
-					<td>$1000</td>
-					<td>$1000</td>
-					<td>
-						<%= link_to 'Details', user_path(user), class: 'btn btn-primary btn-sm' %>&nbsp;
-						<%= link_to 'Edit', edit_user_path(user), class: 'btn btn-primary btn-sm' %>
-					</td>
-				</tr>
-			<% end %>
-		</table>
-	</section>
-</div>
+		<% end %>
+	</table>
+</section>
+
 
 
 

@@ -12,7 +12,11 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  resources :courses
+  resources :courses do
+    get :manage, on: :collection
+    get :admin_manage, on: :collection
+    get :admin_upload, on: :collection
+  end
 
   root 'pages#index'
 

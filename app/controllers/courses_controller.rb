@@ -29,12 +29,24 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
-    @course.user = current_user
+    @course.user_id = params[:user_id] ||= current_user.id
     if @course.save
       redirect_to course_path(@course), notice: 'The course has been created successfully!'
     else
       render 'new'
     end
+  end
+
+  def manage
+    @courses = current_user.courses
+  end
+
+  def admin_manage
+    @courses = Course.all.order('created_at DESC')
+  end
+
+  def admin_upload
+    redirect_to users_path, alert: 'Please click "details" on a user to upload for him'
   end
 
   private

@@ -26,7 +26,7 @@
 					<% end %>
 				</table>
 			</section>
-			<%= link_to 'Manage My Orders', '#', class: 'btn btn-primary btn-sm' %>
+			<%= link_to 'Manage Orders', '#', class: 'btn btn-primary btn-sm' %>
 		</div>
 	</section>
 
@@ -39,20 +39,19 @@
 						<th>ID</th>
 						<th>Course Title</th>
 						<th>Created</th>
-						<th>Earnings</th>
+						<th>Approved</th>
 					</tr>
 					<% @courses.each do |course| %>
 						<tr>
 							<td><%= course.id %></td>
 							<td><%= course.title %></td>
 							<td><%= course.created_at.to_date %></td>
-							<td>$1000</td>
+							<td><%= course.approved ? 'yes' : 'no' %></td>
 						</tr>
 					<% end %>
 				</table>
 			</section>
-			<%= link_to 'Manage Courses', '#', class: 'btn btn-primary btn-sm' %>&nbsp;
-			<%= link_to 'Upload a New Course', '#', class: 'btn btn-primary btn-sm' %>
+			<%= link_to 'Manage Courses', admin_manage_courses_path, class: 'btn btn-primary btn-sm' %>
 		</div>
 	</section>
 
@@ -83,7 +82,7 @@
 					<% end %>
 				</table>
 			</section>
-			<%= link_to 'View Order History', '#', class: 'btn btn-primary btn-sm' %>
+			<%= link_to 'Manage Users', users_path, class: 'btn btn-primary btn-sm' %>
 		</div>
 	</section>
 
