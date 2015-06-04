@@ -11,7 +11,7 @@
 			<div class="well course">
 				<img src="http://placehold.it/200x200" class="img-thumbnail center" />
 				<h4><%= course.title %></h4>
-				<p class="author">By <%= course.user.first_name %> <%= course.user.last_name %></p>
+				<p class="author">By <%= course.seller.full_name %></p>
 				<%= link_to 'I WANT TO LEARN THIS', course_path(course), class: 'btn btn-primary learn_this' %>
 			</div>
 		</section>

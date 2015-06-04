@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :courses
+  has_many :orders
+
+  has_many :line_items, through: :orders
 
   validates :first_name, presence: true
   validates :last_name, presence: true

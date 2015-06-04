@@ -1,0 +1,103 @@
+	<h3>Your Information</h3>
+
+	<div class="well">
+		<% if user_signed_in? === false %>
+			<%= link_to 'Already registered? Please click here to sign in', new_user_session_path %>
+		<% end %>
+
+		<div class="row">&nbsp;</div>
+
+		<%= form_for @user, html: {class: "user form-group"} do |f| %>
+
+			<section class="col-md-4">
+				<div class="field form-group">
+		      <%= f.label :first_name %><br />
+		      <%= f.text_field :first_name, autofocus: true, class: 'form-control'%>
+		    </div>
+
+				<div class="field form-group">
+		      <%= f.label :last_name %><br />
+		      <%= f.text_field :last_name, autofocus: true, class: 'form-control'%>
+		    </div>
+
+				<div class="field form-group">
+		      <%= f.label :email, 'Email Address' %><br />
+		      <%= f.text_field :email, autofocus: true, class: 'form-control'%>
+		    </div>
+
+		    <div class="field form-group">
+		      <%= f.label :password %><br />
+		      <%= f.password_field :password, autofocus: true, class: 'form-control'%>
+		    </div>
+
+				<div class="field form-group">
+		      <%= f.label :password_confirmation %><br />
+		      <%= f.password_field :password_confirmation, autofocus: true, class: 'form-control'%>
+		    </div>
+			</section>
+
+			<section class="col-md-4">
+				<div class="field form-group">
+		      <%= f.label :shipping_add1, 'Shipping Address' %><br />
+		      <%= f.text_field :shipping_add1, autofocus: true, class: 'form-control address1'%>
+		      <%= f.text_field :shipping_add2, autofocus: true, class: 'form-control'%>
+		    </div>
+
+		    <div class="field form-group">
+		      <%= f.label :shipping_city, 'Town/City' %><br />
+		      <%= f.text_field :shipping_city, autofocus: true, class: 'form-control'%>
+		    </div>
+				
+				<div class="row">
+		    	<section class="field form-group col-md-6">
+			      <%= f.label :shipping_state, 'State' %><br />
+			      <%= f.text_field :shipping_state, autofocus: true, class: 'form-control'%>
+		    	</section>
+
+		    	<section class="field form-group col-md-6">
+			      <%= f.label :shipping_zip, 'Zip' %><br />
+			      <%= f.text_field :shipping_zip, autofocus: true, class: 'form-control'%>
+		    	</section>
+		    </div>
+
+	    	<div class="field form-group">
+		      <%= f.label :shipping_country, 'Country' %><br />
+		      <%= f.text_field :shipping_country, autofocus: true, class: 'form-control'%>
+	    	</div>
+			</section>
+
+			<section class="col-md-4">
+				<div class="field form-group">
+		      <%= f.label :billing_add1, 'Billing Address' %><br />
+		      <%= f.text_field :billing_add1, autofocus: true, class: 'form-control address1'%>
+		      <%= f.text_field :billing_add2, autofocus: true, class: 'form-control'%>
+		    </div>
+
+		    <div class="field form-group">
+		      <%= f.label :billing_city, 'Town/City' %><br />
+		      <%= f.text_field :billing_city, autofocus: true, class: 'form-control'%>
+		    </div>
+				
+				<div class="row">
+		    	<section class="field form-group col-md-6">
+			      <%= f.label :billing_state, 'State' %><br />
+			      <%= f.text_field :billing_state, autofocus: true, class: 'form-control'%>
+		    	</section>
+
+		    	<section class="field form-group col-md-6">
+			      <%= f.label :billing_zip, 'Zip' %><br />
+			      <%= f.text_field :billing_zip, autofocus: true, class: 'form-control'%>
+		    	</section>
+		    </div>
+
+	    	<div class="field form-group">
+		      <%= f.label :billing_country, 'Country' %><br />
+		      <%= f.text_field :billing_country, autofocus: true, class: 'form-control'%>
+	    	</div>
+			</section>
+
+			<div class="row">&nbsp;</div>
+
+		</div>
+
+	<% end %>

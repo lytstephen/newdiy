@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  pmt_method: MyString
+  pmt_status: MyString
+  shipping_add1: MyString
+  shipping_add2: MyString
+  shipping_city: MyString
+  shipping_state: MyString
+  shipping_zip: MyString
+  shipping_country: MyString
+  billing_add1: MyString
+  billing_add2: MyString
+  billing_city: MyString
+  billing_state: MyString
+  billing_zip: MyString
+  billing_country: MyString
+
+two:
+  user_id: 
+  pmt_method: MyString
+  pmt_status: MyString
+  shipping_add1: MyString
+  shipping_add2: MyString
+  shipping_city: MyString
+  shipping_state: MyString
+  shipping_zip: MyString
+  shipping_country: MyString
+  billing_add1: MyString
+  billing_add2: MyString
+  billing_city: MyString
+  billing_state: MyString
+  billing_zip: MyString
+  billing_country: MyString

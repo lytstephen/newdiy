@@ -22,7 +22,7 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <%= link_to 'View Cart (4)', '#', class: 'btn btn-primary btn-sm' %>
+        <%= link_to 'View Cart (' + items_in_cart.to_s + ')', cart_path, class: 'btn btn-primary btn-sm' %>
         <% if user_signed_in? %>
           <% if current_user.admin === true %>
             <%= link_to 'Admin Dashboard', admin_path, class: 'btn btn-primary btn-sm' %>

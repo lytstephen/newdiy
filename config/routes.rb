@@ -12,6 +12,12 @@ Rails.application.routes.draw do
 
   resources :categories
 
+  resources :orders
+
+  post 'create_video_line_item' => 'orders#create_video_line_item'
+  post 'create_materials_line_item' => 'orders#create_materials_line_item'
+  resources :line_items, only: [:destroy]
+
   resources :courses do
     get :manage, on: :collection
     get :admin_manage, on: :collection
@@ -21,6 +27,10 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   get 'admin' => 'pages#admin'
+
+  get 'cart' => 'pages#cart'
+  get 'checkout' => 'pages#checkout'
+  get 'payment' => 'pages#payment'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
