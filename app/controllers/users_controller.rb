@@ -25,6 +25,8 @@ class UsersController < ApplicationController
 
   def dashboard
     @courses = current_user.courses.order('created_at DESC').take(3)
+    @orders = current_user.orders.order('created_at DESC').take(3)
+    @orders_to_ship = current_user.line_items.where(shipping_status: 'pending').order('created_at DESC').take(3)
   end
 
   def checkout

@@ -1,2 +1,68 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<% @page_title = 'ORDER ' '#' + @order.id.to_s + ' DETAILS' %>
+
+<% if current_user.admin === true %>
+	<%= render 'users/admin_side_nav' %>
+<% else %>
+	<%= render 'users/user_side_nav' %>
+<% end %>
+
+<div class="well col-md-9">
+
+	<section class="row col-md-9">
+		<table class="table">
+			<tr>
+				<th>Order #</th>
+				<th>Date</th>
+				<th>Total</th>
+				<th>Method</th>
+				<th>Status</th>
+			</tr>
+			<tr>
+				<td><%= @order.id %></td>
+				<td><%= @order.created_at.to_date %></td>
+				<td>$<%= @order.order_total %></td>
+				<td><%= @order.pmt_method %></td>
+				<td><%= @order.pmt_status %></td>
+			</tr>
+		</table>
+	</section>
+	
+	<section class="row">&nbsp;</section>
+	<section class="row">&nbsp;</section>
+
+	<table class="table table-striped">
+		<tr>
+			<th>Course Title</th>
+			<th>Item</th>
+			<th>Quantity</th>
+			<th>Unit Price</th>
+			<th>Subtotal</th>
+			<th>Shipping Status</th>
+		</tr>
+		<% @order.line_items.each do |line_item| %>
+			<tr>
+				<td><%= line_item.course.title %></td>
+				<td><%= line_item.item_type %></td>
+				<td><%= line_item.quantity %></td>
+				<td>$<%= line_item.unit_price %></td>
+				<td>$<%= line_item.quantity * line_item.unit_price %></td>
+				<td><%= line_item.shipping_status %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

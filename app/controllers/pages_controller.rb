@@ -10,6 +10,7 @@ class PagesController < ApplicationController
     @courses = Course.all.order('created_at DESC').take(3)
     @users = User.all.order('created_at DESC').take(3)
     @categories = Category.all.take(4)
+    @orders = Order.all.order('created_at DESC').take(3)
   end
 
   def cart

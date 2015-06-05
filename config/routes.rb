@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   resources :orders do
     get :confirm, on: :member
+    get :purchase_history, on: :collection
+    get :success, on: :collection
   end
 
   post 'create_video_line_item' => 'orders#create_video_line_item'

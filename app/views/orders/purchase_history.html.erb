@@ -1,0 +1,26 @@
+<% @page_title = 'MY PURCHASE HISTORY' %>
+
+<%= render 'users/user_side_nav' %>
+
+<div class="well col-md-9">
+	<table class="table table-striped">
+		<tr>
+			<th>Order #</th>
+			<th>Purchase Date</th>
+			<th>Total</th>
+			<th>Payment Method</th>
+			<th>Payment Status</th>
+			<th>&nbsp;</th>
+		</tr>
+		<% @orders.each do |order| %>
+			<tr>
+				<td><%= order.id %></td>
+				<td><%= order.created_at.to_date %></td>
+				<td><%= order.order_total %></td>
+				<td><%= order.pmt_method %></td>
+				<td><%= order.pmt_status %></td>
+				<td><%= link_to 'Details', order_path(order), class: 'btn btn-primary btn-sm' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>

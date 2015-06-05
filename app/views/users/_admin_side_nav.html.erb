@@ -2,7 +2,7 @@
 	<section class="well">
 		<ul class="nav nav-pills nav-stacked">
 		  <li role="presentation"><a href="/admin">Back to Dashboard</a></li>
-		  <li role="presentation"><a href="#">Manage Orders</a></li>
+		  <li role="presentation"><%= link_to 'Manage Orders', orders_path %></li>
 		  <li role="presentation"><%= link_to 'Manage Courses', admin_manage_courses_path %></li>
 		  <li role="presentation"><%= link_to 'Manage Categories', categories_index_path %></li>
 		  <li role="presentation"><%= link_to 'Manage Users', users_path %></li>

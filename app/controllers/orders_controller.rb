@@ -1,23 +1,30 @@
 class OrdersController < ApplicationController
   
   before_action :assign_course_order, only: [:create_video_line_item, :create_materials_line_item]
+  before_action :set_order, only: [:show, :update]
 
   def index
+    if current_user.admin === true
+      @orders = Order.all.order('created_at DESC')
+    else
+      @line_items = current_user.line_items.order('shipping_status')
+    end
   end
 
   def show
+    
   end
 
   def edit
   end
 
   def update
-    @order = Order.find(params[:id])
+    @order.pmt_status = 'paid'
     if @order.update(order_params)
-      redirect_to root_path, notice: 'order success!'
-      cookies[:order_id] = nil;
+      redirect_to success_orders_path
+      cookies.delete(:order_id)
     else
-      redirect_to root_path, notice: 'order failed'
+      render 'confirm_order', notice: 'Order Failed.'
     end
   end
 
@@ -30,7 +37,8 @@ class OrdersController < ApplicationController
       @line_item = @order.line_items.build(course_id: @course.id,
                                            item_type: 'video',
                                            unit_price: @course.video_cost,
-                                           quantity: 1)
+                                           quantity: 1,
+                                           shipping_status: 'N/A')
       if @line_item.save
         redirect_to course_path(@course), notice: "Item Added to Cart successfully!"
       else
@@ -53,7 +61,8 @@ class OrdersController < ApplicationController
       @line_item = @order.line_items.build(course_id: @course.id,
                                            item_type: 'materials',
                                            unit_price: @course.material_cost,
-                                           quantity: 1)
+                                           quantity: 1,
+                                           shipping_status: 'pending')
       if @line_item.save
         redirect_to course_path(@course), notice: "Item Added to Cart successfully!"
       else
@@ -67,7 +76,15 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def purchase_history
+    @orders = current_user.orders.order('created_at')
+  end
+
   private
+
+    def set_order
+      @order = Order.find(params[:id])
+    end
 
     def order_params
       params.require(:order).permit(:user_id, :pmt_method, 
@@ -88,19 +105,19 @@ class OrdersController < ApplicationController
       # if no cookie, let see if user is signed
       elsif user_signed_in?
         # if he is, let see if he has unfinished orders
-        @order = Order.find_by(user_id: current_user.id, completed: false)
+        # @order = Order.find_by(user_id: current_user.id, completed: false)
         # if he didn't have unfinished order, let's create one for him
-        if @order.nil?
+        # if @order.nil?
           @order = Order.create(user_id: current_user.id)
-        end
+        # end
         # and set the cookies for him
-        cookies.permenant[:order_id] = @order.id
+        cookies[:order_id] = @order.id
 
       # if there's no cookie, and the user is not signed in, then just create order with no user
       # and set the cookie
       else
         @order = Order.create
-        cookies.permanent[:order_id] = @order.id
+        cookies[:order_id] = @order.id
       end
 
     end
