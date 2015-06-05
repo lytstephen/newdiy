@@ -12,6 +12,13 @@ class OrdersController < ApplicationController
   end
 
   def update
+    @order = Order.find(params[:id])
+    if @order.update(order_params)
+      redirect_to root_path, notice: 'order success!'
+      cookies[:order_id] = nil;
+    else
+      redirect_to root_path, notice: 'order failed'
+    end
   end
 
   def create_video_line_item
@@ -55,7 +62,20 @@ class OrdersController < ApplicationController
     end
   end
 
+  def confirm
+    @user = current_user
+    @order = Order.find(params[:id])
+  end
+
   private
+
+    def order_params
+      params.require(:order).permit(:user_id, :pmt_method, 
+        :shipping_add1, :shipping_add2, :shipping_city,
+        :shipping_state, :shipping_zip, :shipping_country,
+        :billing_add1, :billing_add2, :billing_city,
+        :billing_state, :billing_zip, :billing_country )
+    end
 
     def assign_course_order
 

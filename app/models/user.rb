@@ -9,11 +9,18 @@ class User < ActiveRecord::Base
 
   has_many :line_items, through: :orders
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  # validates_presence_of :first_name, :last_name,
+  #       :shipping_add1, :shipping_add2,
+  #       :shipping_country,
+  #       :billing_add1, :billing_add2, :billing_city,
+  #       :billing_country, only: :checkout
 
   def full_name
     first_name + " " + last_name
   end
+
+  # def checkout
+    
+  # end
 
 end

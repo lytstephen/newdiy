@@ -6,13 +6,18 @@ Rails.application.routes.draw do
 
   resources :users do
     get :dashboard, on: :collection
+    get :checkout, on: :collection
+    post :checkout_create, on: :collection
+    put :checkout_update, on: :member
   end
 
   get 'categories/index'
 
   resources :categories
 
-  resources :orders
+  resources :orders do
+    get :confirm, on: :member
+  end
 
   post 'create_video_line_item' => 'orders#create_video_line_item'
   post 'create_materials_line_item' => 'orders#create_materials_line_item'
@@ -29,7 +34,6 @@ Rails.application.routes.draw do
   get 'admin' => 'pages#admin'
 
   get 'cart' => 'pages#cart'
-  get 'checkout' => 'pages#checkout'
   get 'payment' => 'pages#payment'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

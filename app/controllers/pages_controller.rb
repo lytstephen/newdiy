@@ -18,14 +18,6 @@ class PagesController < ApplicationController
     end
   end
 
-  def checkout
-    if user_signed_in?
-      @user = current_user
-    else
-      @user = User.new
-    end
-  end
-
   def payment
     @user = current_user
     @order = Order.find(cookies[:order_id])
