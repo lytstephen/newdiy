@@ -31,14 +31,11 @@ ActiveRecord::Schema.define(version: 20150604041757) do
     t.text     "materials"
     t.integer  "video_cost"
     t.integer  "material_cost"
-    t.boolean  "approved",       default: false
-    t.boolean  "visibility",     default: true
+    t.boolean  "approved",      default: false
+    t.boolean  "visibility",    default: true
     t.boolean  "in_stock"
-    t.string   "featured_image"
-    t.string   "image1"
-    t.string   "image2"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "courses", ["category_id"], name: "index_courses_on_category_id", using: :btree

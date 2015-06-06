@@ -1,6 +1,6 @@
 <% @page_title = 'YOUR CART' %>
 
-<% if @order.nil?%>
+<% if @order.nil? or @order.line_items.length == 0 %>
 	
 	<div class="well text-center">
 		<h4>NO ITEMS IN YOUR CART.</h4><br/>

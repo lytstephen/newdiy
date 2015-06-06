@@ -1,7 +1,20 @@
 == README
 
+USAGE:
+There's a buyer with email: 'buyer@hello.com', password: '123456789'
+seller with email: 'seller@hello.com', password: '123456789'
+admin with email: 'admin@hello.com', password: '123456789'
+Seller has already uploaded some videos.
+
+You can login as Admin to manage all users, courses, categories, and orders.
+You can login as Seller to upload more courses, or manage courses that he has uploaded.
+You can login as Buyer to buy some courses.
+Feel free to play around! :D Let me know if any part didn't quite make sense.
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
+
+
 
 Things you may want to cover:
 

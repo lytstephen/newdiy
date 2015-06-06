@@ -12,9 +12,6 @@ class CreateCourses < ActiveRecord::Migration
       t.boolean :approved, default: false
       t.boolean :visibility, default: true
       t.boolean :in_stock
-      t.string :featured_image
-      t.string :image1
-      t.string :image2
 
       t.timestamps null: false
     end
