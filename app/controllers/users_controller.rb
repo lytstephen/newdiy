@@ -29,32 +29,6 @@ class UsersController < ApplicationController
     @orders_to_ship = current_user.line_items.where(shipping_status: 'pending').order('created_at DESC').take(3)
   end
 
-  def checkout
-    if user_signed_in?
-      @user = current_user
-    else
-      @user = User.new
-    end
-  end
-
-  def checkout_create
-    @user = User.new(user_params)
-    if @user.save
-      redirect_to checkout_users_path, notice: 'created user!'
-    else
-      redirect_to checkout_users_path, notice: 'unsuccessful create'
-    end
-  end
-
-  def checkout_update
-    @user = current_user
-    if @user.update(user_params)
-      redirect_to confirm_order_path(@order), notice: 'update success!'
-    else
-      redirect_to confirm_order_path(@order), notice: 'unsuccessful update'
-    end
-  end
-
   private
 
     def user_params

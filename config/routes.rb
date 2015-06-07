@@ -6,9 +6,6 @@ Rails.application.routes.draw do
 
   resources :users do
     get :dashboard, on: :collection
-    get :checkout, on: :collection
-    post :checkout_create, on: :collection
-    put :checkout_update, on: :member
   end
 
   get 'categories/index'
@@ -16,14 +13,19 @@ Rails.application.routes.draw do
   resources :categories
 
   resources :orders do
+    get :checkout, on: :member
     get :confirm, on: :member
+    put :complete, on: :member
     get :purchase_history, on: :collection
     get :success, on: :collection
   end
 
-  post 'create_video_line_item' => 'orders#create_video_line_item'
-  post 'create_materials_line_item' => 'orders#create_materials_line_item'
-  resources :line_items, only: [:destroy]
+  post 'create_video_line_item' => 'line_items#create_video_line_item'
+  post 'create_materials_line_item' => 'line_items#create_materials_line_item'
+  resources :line_items, only: [:destroy] do
+    put :add_material, on: :member
+    put :subtract_material, on: :member
+  end
 
   resources :courses do
     get :manage, on: :collection

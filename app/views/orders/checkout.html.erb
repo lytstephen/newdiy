@@ -1,17 +1,12 @@
 <% @page_title = 'YOUR INFORMATION' %>
 
 <div class="well">
-	<% if user_signed_in? === false %>
-		<%= link_to 'Already registered? Please click here to sign in', new_user_session_path %>
-	<% end %>
 
 	<div class="row">&nbsp;</div>
 
-	<%= form_for @user, method: 'put', 
-      url: checkout_update_user_path(@user),
-      html: {class: "form-group"} do |f| %>
+	<%= form_for @order, html: {class: "form-group"} do |f| %>
 
-    <%= render 'layouts/errors', obj: @user %>
+    <%= render 'layouts/errors', obj: @order %>
 
 		<section class="col-md-4">
 			<div class="field form-group">
@@ -29,18 +24,10 @@
 	      <%= f.text_field :email, autofocus: true, class: 'form-control'%>
 	    </div>
 
-	    <div class="field form-group">
-	      <%= f.label :password %><br />
-	      <%= f.password_field :password, autofocus: true, class: 'form-control'%>
-	    </div>
-
-			<div class="field form-group">
-	      <%= f.label :password_confirmation %><br />
-	      <%= f.password_field :password_confirmation, autofocus: true, class: 'form-control'%>
-	    </div>
 		</section>
 
 		<section class="col-md-4">
+
 			<div class="field form-group">
 	      <%= f.label :shipping_add1, 'Shipping Address' %><br />
 	      <%= f.text_field :shipping_add1, autofocus: true, class: 'form-control address1'%>
@@ -68,6 +55,8 @@
 	      <%= f.label :shipping_country, 'Country' %><br />
 	      <%= f.text_field :shipping_country, autofocus: true, class: 'form-control'%>
     	</div>
+
+    	<p class="small">(You don't have to fill out shipping Address if you are not ordering materials)</p>
 		</section>
 
 		<section class="col-md-4">

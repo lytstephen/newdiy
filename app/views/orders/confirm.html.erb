@@ -38,39 +38,39 @@
 	<section class="col-md-4">
 		<table class="table table-striped">
 			<tr><th>First Name</th></tr>
-			<tr><td><%= @user.first_name %></td></tr>
+			<tr><td><%= @order.first_name %></td></tr>
 			<tr><th>Last Name</th></tr>
-			<tr><td><%= @user.last_name %></td></tr>
+			<tr><td><%= @order.last_name %></td></tr>
 			<tr><th>Email Address</th></tr>
-			<tr><td><%= @user.email %></td></tr>
+			<tr><td><%= @order.email %></td></tr>
 		</table>
 	</section>
 
 	<section class="col-md-4">
 		<table class="table table-striped">
 			<tr><th colspan="2">Shipping Address</th></tr>
-			<tr><td colspan="2"><%= @user.shipping_add1 %></td></tr>
-			<tr><td colspan="2"><%= @user.shipping_add2 %></td></tr>
+			<tr><td colspan="2"><%= @order.shipping_add1 %></td></tr>
+			<tr><td colspan="2"><%= @order.shipping_add2 %></td></tr>
 			<tr><th colspan="2">Town / City</th></tr>
-			<tr><td colspan="2"><%= @user.shipping_city %></td></tr>
+			<tr><td colspan="2"><%= @order.shipping_city %></td></tr>
 			<tr><th>State</th><th>ZIP<th></tr>
-			<tr><td><%= @user.shipping_state %></td><td><%= @user.shipping_zip %></tr>
+			<tr><td><%= @order.shipping_state %></td><td><%= @order.shipping_zip %></tr>
 			<tr><th colspan="2">Country</th></tr>
-			<tr><td colspan="2"><%= @user.shipping_country %></td></tr>
+			<tr><td colspan="2"><%= @order.shipping_country %></td></tr>
 		</table>
 	</section>
 
 	<section class="col-md-4">
 		<table class="table table-striped">
 			<tr><th colspan="2">Billing Address</th></tr>
-			<tr><td colspan="2"><%= @user.billing_add1 %></td></tr>
-			<tr><td colspan="2"><%= @user.billing_add2 %></td></tr>
+			<tr><td colspan="2"><%= @order.billing_add1 %></td></tr>
+			<tr><td colspan="2"><%= @order.billing_add2 %></td></tr>
 			<tr><th colspan="2">Town / City</th></tr>
-			<tr><td colspan="2"><%= @user.billing_city %></td></tr>
+			<tr><td colspan="2"><%= @order.billing_city %></td></tr>
 			<tr><th>State</th><th>ZIP<th></tr>
-			<tr><td><%= @user.billing_state %></td><td><%= @user.billing_zip %></tr>
+			<tr><td><%= @order.billing_state %></td><td><%= @order.billing_zip %></tr>
 			<tr><th colspan="2">Country</th></tr>
-			<tr><td colspan="2"><%= @user.billing_country %></td></tr>
+			<tr><td colspan="2"><%= @order.billing_country %></td></tr>
 		</table>
 	</section>
 
@@ -82,7 +82,7 @@
 
 <div class="well ">
 
-	<%= form_for @order, class: 'form-group' do |f| %>
+	<%= form_for @order, url: { action: 'complete' }, method: 'put', class: 'form-group' do |f| %>
 		
 		<section class="col-md-12">
 			<div class="radio">

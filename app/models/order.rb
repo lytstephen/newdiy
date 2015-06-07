@@ -2,6 +2,8 @@ class Order < ActiveRecord::Base
   belongs_to :buyer, class_name: 'User', foreign_key: 'user_id'
   has_many :line_items, dependent: :destroy
 
+  validates_presence_of :first_name, :last_name, :email, on: :update
+
   def order_total
     order_total = 0
     self.line_items.each do |line_item|

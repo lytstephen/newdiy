@@ -26,7 +26,13 @@
 					<tr>
 						<td><%= line_item.course.title %></td>
 						<td><%= line_item.item_type %></td>
-						<td><%= line_item.quantity %></td>
+						<td>
+							<%= line_item.quantity %>
+							<% if line_item.item_type == 'materials' %>&nbsp;
+								<%= link_to '+', add_material_line_item_path(line_item), method: 'put', class: 'btn btn-primary btn-xsm' %>
+								<%= link_to '-', subtract_material_line_item_path(line_item), method: 'put', class: 'btn btn-primary btn-xsm' %>
+							<% end %>
+						</td>
 						<td>$<%= line_item.unit_price %></td>
 						<td>$<%= line_item.subtotal %></td>
 						<td><%= link_to 'Remove', line_item, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger btn-sm' %></td>
@@ -40,7 +46,7 @@
 				</tr>
 			</table>
 
-			<%= link_to 'Checkout', checkout_users_path, class: 'btn btn-primary btn-lg', style: 'float:right' %>
+			<%= link_to 'Checkout', checkout_order_path(@order), class: 'btn btn-primary btn-lg', style: 'float:right' %>
 		</section>
 		<section class="row">&nbsp;</section>
 	</div>
