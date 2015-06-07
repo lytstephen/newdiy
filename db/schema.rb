@@ -71,6 +71,9 @@ ActiveRecord::Schema.define(version: 20150604041757) do
     t.string   "billing_state"
     t.string   "billing_zip"
     t.string   "billing_country"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
     t.boolean  "completed",        default: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false

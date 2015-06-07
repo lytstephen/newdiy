@@ -16,6 +16,9 @@ class CreateOrders < ActiveRecord::Migration
       t.string :billing_state
       t.string :billing_zip
       t.string :billing_country
+      t.string :first_name
+      t.string :last_name
+      t.string :email
       t.boolean :completed, default: false
 
       t.timestamps null: false
