@@ -34,7 +34,8 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:email, :password, 
         :password_confirmation, :first_name, :last_name,
-        :phone, :shipping_add1, :shipping_add2, :shipping_city,
+        :phone, :billing_same,
+        :shipping_add1, :shipping_add2, :shipping_city,
         :shipping_state, :shipping_zip, :shipping_country,
         :billing_add1, :billing_add2, :billing_city,
         :billing_state, :billing_zip, :billing_country)

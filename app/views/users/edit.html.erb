@@ -71,7 +71,10 @@
 	    </div>
 
 	    <div class="field form-group">
-	      <%= f.label :billing_add1, 'Billing Address' %><br />
+	      <%= f.label :billing_add1, 'Billing Address' %>&nbsp;
+					<%= f.check_box :billing_same %>&nbsp;
+					<%= f.label :billing_same, 'same as shipping', class: 'small billing_same' %>
+	      <br />
 	      <%= f.text_field :billing_add1, autofocus: true, class: 'form-control address1'%>
 	      <%= f.text_field :billing_add2, autofocus: true, class: 'form-control'%>
 	    </div>
