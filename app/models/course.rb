@@ -8,7 +8,7 @@ class Course < ActiveRecord::Base
 
   validates_presence_of :title, :description, :materials
 
-  validates :title, length: { in: 5..200 }
+  validates :title, length: { in: 5..100 }
   validates :description, length: { in: 10..200 }
 
   validates :video_cost, numericality: { only_integer: true }

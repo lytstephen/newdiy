@@ -19,7 +19,7 @@
 		<% else %>
 			<img src="http://placehold.it/230x230?text=No+Image" class='img img-thumbnail' />
 		<% end %>
-		<h5><%= course.title %></h5>
+		<h5><%= truncate course.title, length: 25, omission: '...' %></h5>
 		<p>By <%= course.seller.full_name %></p>
 	</div>
 	<% end %>

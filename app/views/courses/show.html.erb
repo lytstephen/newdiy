@@ -44,28 +44,30 @@
 		<section class="well">
 			<p><b>Author: </b><%= @course.seller.full_name %></p>
 			<p><b>Date Created: </b><%= @course.created_at.to_date %></p>
+			<p><b>Description: </b><%= @course.description %></p>
+		</section>
+		<section class="well">
+			<h5 class="text-center">MATERIALS NEEDED:</h5>
 			<hr/>
-			<h5>MATERIALS NEEDED:</h5>
-			<hr/>
-			<section class="materials_needed">
+			<div class="materials_needed">
 				<%= simple_format @course.materials %>
-			</section>
-			<h5>PRICE</h5>
-			<hr/>
-			<p>VIDEO: $<%= @course.video_cost %></p>
-			<p>MATERIALS: $<%= @course.material_cost %></p>
+			</div>
 		</section>
 
-		<div class="row">
-			<section class="col-md-6 text-center">
-				<h5>BUY VIDEO</h5>
+		<section class="well">
+			<div class="col-md-6 text-center">
+				<h5>BUY VIDEO: </h5>
+				<p><strong>$<%= @course.video_cost %></strong></p>
 				<%= link_to 'Add To Cart', create_video_line_item_path(course_id: params[:id]), method: :post, class: 'btn btn-primary' %>
-			</section>
-			<section class="col-md-6 text-center">
-				<h5>BUY MATERIALS</h5>
+			</div>
+			<div class="col-md-6 text-center">
+				<h5>BUY MATERIALS: </h5>
+				<p><strong>$<%= @course.material_cost %></strong></p>
 				<%= link_to 'Add To Cart', create_materials_line_item_path(course_id: params[:id]), method: :post, class: 'btn btn-primary' %>
-			</section>
-		</div>
+			</div>
+
+			<div class="row">&nbsp;</div>
+		</section>
 
 	</div>
 </section>
@@ -82,7 +84,7 @@
 		<% else %>
 			<img src="http://placehold.it/230x230?text=No+Image" class='img img-thumbnail' />
 		<% end %>
-		<h5><%= course.title %></h5>
+		<h5><%= truncate course.title, length: 28, omission: '...' %></h5>
 		<p>By <%= course.seller.full_name %></p>
 	</div>
 	<% end %>
