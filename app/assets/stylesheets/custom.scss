@@ -198,3 +198,43 @@ hr {
   min-height: 148px;
 }
 
+.embed-responsive-16by9 {
+  padding-bottom: 56.25%;
+  max-width: 641px;
+  margin: 0 auto;
+  border: 2px solid #bbb;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.title_left {
+  float:left;
+
+  .btn {
+    margin-bottom:15px;
+  }
+}
+
+.title_right {
+  float:right;
+
+  .btn {
+    margin-bottom:15px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

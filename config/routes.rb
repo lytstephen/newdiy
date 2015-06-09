@@ -34,6 +34,9 @@ Rails.application.routes.draw do
     get :manage, on: :collection
     get :admin_manage, on: :collection
     get :admin_upload, on: :collection
+    get :remove_featured, on: :member
+    get :remove_image1, on: :member
+    get :remove_image2, on: :member
   end
 
   root 'pages#index'

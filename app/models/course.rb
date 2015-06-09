@@ -14,6 +14,16 @@ class Course < ActiveRecord::Base
   validates :video_cost, numericality: { only_integer: true }
   validates :material_cost, numericality: { only_integer: true }
 
+  has_attached_file :featured_image, styles: { 
+    large: '600x600', medium: '230x230#', small: '200x200#', thumbnail: '180x180#'
+  }
+  has_attached_file :image1, styles: { large: '600x600', thumbnail: '180x180#' }
+  has_attached_file :image2, styles: { large: '600x600', thumbnail: '180x180#' }
+
+  validates_attachment_content_type :featured_image, content_type: /\Aimage\/.*\Z/
+  # validates_attachment_content_type :image1, content_type: /\Aimage\/.*\Z/
+  # validates_attachment_content_type :image2, content_type: /\Aimage\/.*\Z/
+
   private
 
     def ensure_not_referenced_by_any_line_item

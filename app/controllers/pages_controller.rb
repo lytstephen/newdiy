@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:admin]
 
   def index
-    
+    @courses = Course.all.order('created_at DESC').take(4)
   end
 
   def admin

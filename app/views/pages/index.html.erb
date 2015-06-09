@@ -12,26 +12,17 @@
 </div>
 
 <div class="row">
+	<% @courses.each do |course| %>
 	<div class="col-md-3 text-center">
-		<img src="http://placehold.it/230x230" class="img-thumbnail center" />
-		<h5>Valentine Self Made ...</h5>
-		<p>By Stephen Leung</p>
+		<% unless course.featured_image.blank? %>
+			<%= image_tag course.featured_image.url(:medium), class: 'img img-thumbnail' %>
+		<% else %>
+			<img src="http://placehold.it/230x230?text=No+Image" class='img img-thumbnail' />
+		<% end %>
+		<h5><%= course.title %></h5>
+		<p>By <%= course.seller.full_name %></p>
 	</div>
-	<div class="col-md-3 text-center">
-		<img src="http://placehold.it/230x230" class="img-thumbnail center" />
-		<h5>Oragami Roses</h5>
-		<p>By Stephen Leung</p>
-	</div>
-	<div class="col-md-3 text-center">
-		<img src="http://placehold.it/230x230" class="img-thumbnail center" />
-		<h5>Father's Day Self Made ...</h5>
-		<p>By Stephen Leung</p>
-	</div>
-	<div class="col-md-3 text-center">
-		<img src="http://placehold.it/230x230" class="img-thumbnail center" />
-		<h5>Mother's Day hand-made ...</h5>
-		<p>By Stephen Leung</p>
-	</div>
+	<% end %>
 </div>
 
 <div class="row">&nbsp;</div>

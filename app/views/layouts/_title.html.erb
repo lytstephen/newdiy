@@ -1,4 +1,8 @@
 <% if @page_title %>
-	<div class="page_title"><%= @page_title %></div>
+	<div class="page_title">
+		<span class="title_left"><%= @title_left %></span>
+		<%= @page_title %>
+		<span class="title_right"><%= @title_right %></span>
+	</div>
 	<hr/>
 <% end %>

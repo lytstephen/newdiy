@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
     else
       request.env['omniauth.origin'] || dashboard_users_path || root_path
     end
-    
   end
 
   protected

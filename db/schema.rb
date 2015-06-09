@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604041757) do
+ActiveRecord::Schema.define(version: 20150609101117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,11 +31,23 @@ ActiveRecord::Schema.define(version: 20150604041757) do
     t.text     "materials"
     t.integer  "video_cost"
     t.integer  "material_cost"
-    t.boolean  "approved",      default: false
-    t.boolean  "visibility",    default: true
+    t.boolean  "approved",                    default: false
+    t.boolean  "visibility",                  default: true
     t.boolean  "in_stock"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.string   "featured_image_file_name"
+    t.string   "featured_image_content_type"
+    t.integer  "featured_image_file_size"
+    t.datetime "featured_image_updated_at"
+    t.string   "image1_file_name"
+    t.string   "image1_content_type"
+    t.integer  "image1_file_size"
+    t.datetime "image1_updated_at"
+    t.string   "image2_file_name"
+    t.string   "image2_content_type"
+    t.integer  "image2_file_size"
+    t.datetime "image2_updated_at"
   end
 
   add_index "courses", ["category_id"], name: "index_courses_on_category_id", using: :btree

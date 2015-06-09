@@ -1,4 +1,5 @@
 <% @page_title = 'EDIT COURSE # ' + @course.id.to_s %>
+<% @title_right = link_to 'View Course', course_path(@course), class: 'btn btn-primary' %>
 
 <%= render 'users/user_side_nav' %>
 
@@ -6,7 +7,7 @@
 
 	<%= render 'layouts/errors', obj: @course %>
 	
-  <%= form_for(@course, html: {class: "form-group"}) do |f| %>
+  <%= form_for(@course, html: {class: "form-group", multipart: true}) do |f| %>
 
     <div class="field form-group">
       <%= f.label :title, 'Course Title' %><br />
@@ -41,15 +42,41 @@
 	  </div>
 		
 		<div class="row">
-			<section class="col-md-6">
-	    	upload featured image
+			<section class="col-md-4 text-center">
+				<%= f.label :featured_image %><br/>
+				<% unless @course.featured_image.blank? %>
+					<%= image_tag @course.featured_image.url(:thumbnail), class: 'img img-thumbnail' %><br/>&nbsp;
+	    	<%= link_to 'Remove Featured Image', remove_featured_course_path,
+	    		class: 'btn btn-primary btn-xsm btn-danger' %><br/>&nbsp;
+	    	<% else %>
+	    		<%= f.file_field :featured_image %>
+				<% end %>
 	    </section>
 
-	    <section class="col-md-6">
-	    	upload image1<br/>
-	    	upload image2
+			<section class="col-md-4 text-center">
+				<%= f.label :image1 %><br/>
+				<% unless @course.image1.blank? %>
+					<%= image_tag @course.image1.url(:thumbnail), class: 'img img-thumbnail' %><br/>&nbsp;
+	    	<%= link_to 'Remove Image 1', remove_image1_course_path,
+	    		class: 'btn btn-primary btn-xsm btn-danger' %><br/>&nbsp;
+	    	<% else %>
+	    		<%= f.file_field :image1 %>
+				<% end %>
+	    </section>
+
+			<section class="col-md-4 text-center">
+				<%= f.label :image2 %><br/>
+				<% unless @course.image2.blank? %>
+					<%= image_tag @course.image2.url(:thumbnail), class: 'img img-thumbnail' %><br/>&nbsp;
+	    	<%= link_to 'Remove Image 2', remove_image2_course_path,
+	    		class: 'btn btn-primary btn-xsm btn-danger' %><br/>&nbsp;
+	    	<% else %>
+	    		<%= f.file_field :image2 %>
+				<% end %>
 	    </section>
 		</div>
+
+		<div class="row">&nbsp;</div>
 
     <div class="actions">
       <%= f.submit "Update Course", class: 'btn btn-primary' %>
