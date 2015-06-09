@@ -1,61 +1,26 @@
-<% if current_user.admin === true %>
+<% @page_title = 'ADMIN - MANAGE ORDERS' %>
 
-	<% @page_title = 'ADMIN - MANAGE ORDERS' %>
-
-	<%= render 'users/admin_side_nav' %>
-
-<% else %>
-
-	<% @page_title = 'MANAGE MY ORDERS' %>
-
-	<%= render 'users/user_side_nav' %>
-
-<% end %>
+<%= render 'users/admin_side_nav' %>
 
 <div class="well col-md-9">
-		<table class="table table-striped">
+	<table class="table table-striped">
+		<tr>
+			<th>Order #</th>
+			<th>Purchase Date</th>
+			<th>Total</th>
+			<th>Payment Method</th>
+			<th>Payment Status</th>
+			<th>&nbsp;</th>
+		</tr>
+		<% @orders.each do |order| %>
 			<tr>
-				<th>ID</th>
-				<th>Date</th>
-				<th>Type</th>
-				<th>Qty</th>
-				<th>Price</th>
-				<th>Total</th>
-				<th>Payment</th>
-				<th>Shipping</th>
-				<th>&nbsp;</th>
+				<td><%= order.id %></td>
+				<td><%= order.created_at.to_date %></td>
+				<td><%= order.order_total %></td>
+				<td><%= order.pmt_method %></td>
+				<td><%= order.pmt_status %></td>
+				<td><%= link_to 'Details', order_path(order), class: 'btn btn-primary btn-sm' %></td>
 			</tr>
-			<% @line_items.each do |line_item| %>
-				<%= form_tag line_item_path(line_item), method: 'put' do %>
-					<tr>
-						<td><%= line_item.id %></td>
-						<td><%= line_item.created_at.to_date %></td>
-						<td><%= line_item.item_type %></td>
-						<td><%= line_item.quantity %></td>
-						<td>$<%= line_item.unit_price %></td>
-						<td>$<%= line_item.unit_price * line_item.quantity %></td>
-						<td><%= line_item.order.pmt_status %></td>
-						<td><%= line_item.shipping_status %></td> <!--drop down select for update -->
-						<td>
-							<%= link_to 'Details', order_path(line_item.order), class: 'btn btn-primary btn-sm' %>
-						</td>
-					</tr>
-				<% end %>
-			<% end %>
-		</table>
+		<% end %>
+	</table>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -25,56 +25,7 @@
 	    </div>
 
 	    <div class="field form-group">
-	      <%= f.label :shipping_add1, 'Shipping Address' %><br />
-	      <%= f.text_field :shipping_add1, autofocus: true, class: 'form-control address1'%>
-	      <%= f.text_field :shipping_add2, autofocus: true, class: 'form-control'%>
-	    </div>
-
-	    <div class="field form-group">
-	      <%= f.label :shipping_city, 'Town/City' %><br />
-	      <%= f.text_field :shipping_city, autofocus: true, class: 'form-control'%>
-	    </div>
-			
-			<div class="row">
-	    	<section class="field form-group col-md-6">
-		      <%= f.label :shipping_state, 'State' %><br />
-		      <%= f.text_field :shipping_state, autofocus: true, class: 'form-control'%>
-	    	</section>
-
-	    	<section class="field form-group col-md-6">
-		      <%= f.label :shipping_zip, 'Zip' %><br />
-		      <%= f.text_field :shipping_zip, autofocus: true, class: 'form-control'%>
-	    	</section>
-	    </div>
-
-    	<div class="field form-group">
-	      <%= f.label :shipping_country, 'Country' %><br />
-	      <%= f.text_field :shipping_country, autofocus: true, class: 'form-control'%>
-    	</div>
-
-		</section>
-
-		<section class="col-md-6">
-			<div class="field form-group">
-	      <%= f.label :phone %><br />
-	      <%= f.text_field :phone, autofocus: true, class: 'form-control'%>
-	    </div>
-
-			<div class="field form-group">
-	      <%= f.label :password %><br />
-	      <%= f.password_field :password, autofocus: true, class: 'form-control'%>
-	    </div>
-
-			<div class="field form-group">
-	      <%= f.label :password_confirmation %><br />
-	      <%= f.password_field :password_confirmation, autofocus: true, class: 'form-control'%>
-	    </div>
-
-	    <div class="field form-group">
-	      <%= f.label :billing_add1, 'Billing Address' %>&nbsp;
-					<%= f.check_box :billing_same %>&nbsp;
-					<%= f.label :billing_same, 'same as shipping', class: 'small billing_same' %>
-	      <br />
+	      <%= f.label :billing_add1, 'Billing Address' %><br />
 	      <%= f.text_field :billing_add1, autofocus: true, class: 'form-control address1'%>
 	      <%= f.text_field :billing_add2, autofocus: true, class: 'form-control'%>
 	    </div>
@@ -99,6 +50,55 @@
     	<div class="field form-group">
 	      <%= f.label :billing_country, 'Country' %><br />
 	      <%= f.text_field :billing_country, autofocus: true, class: 'form-control'%>
+    	</div>
+
+		</section>
+
+		<section class="col-md-6">
+			<div class="field form-group">
+	      <%= f.label :phone %><br />
+	      <%= f.text_field :phone, autofocus: true, class: 'form-control'%>
+	    </div>
+
+			<div class="field form-group">
+	      <%= f.label :password %><br />
+	      <%= f.password_field :password, autofocus: true, class: 'form-control'%>
+	    </div>
+
+			<div class="field form-group">
+	      <%= f.label :password_confirmation %><br />
+	      <%= f.password_field :password_confirmation, autofocus: true, class: 'form-control'%>
+	    </div>
+
+	    <div class="field form-group">
+	      <%= f.label :shipping_add1, 'Shipping Address' %>&nbsp;
+					<%= f.check_box :billing_same %>&nbsp;
+					<%= f.label :billing_same, 'same as billing', class: 'small billing_same' %>
+	      <br />
+	      <%= f.text_field :shipping_add1, autofocus: true, class: 'form-control address1'%>
+	      <%= f.text_field :shipping_add2, autofocus: true, class: 'form-control'%>
+	    </div>
+
+	    <div class="field form-group">
+	      <%= f.label :shipping_city, 'Town/City' %><br />
+	      <%= f.text_field :shipping_city, autofocus: true, class: 'form-control'%>
+	    </div>
+			
+			<div class="row">
+	    	<section class="field form-group col-md-6">
+		      <%= f.label :shipping_state, 'State' %><br />
+		      <%= f.text_field :shipping_state, autofocus: true, class: 'form-control'%>
+	    	</section>
+
+	    	<section class="field form-group col-md-6">
+		      <%= f.label :shipping_zip, 'Zip' %><br />
+		      <%= f.text_field :shipping_zip, autofocus: true, class: 'form-control'%>
+	    	</section>
+	    </div>
+
+    	<div class="field form-group">
+	      <%= f.label :shipping_country, 'Country' %><br />
+	      <%= f.text_field :shipping_country, autofocus: true, class: 'form-control'%>
     	</div>
 
 		</section>

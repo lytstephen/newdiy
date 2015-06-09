@@ -1,0 +1,37 @@
+<% @page_title = @user.full_name.upcase + "'S UPLOADED COURSES" %>
+
+<%= render 'admin_side_nav' %>
+
+<div class="well col-md-9">
+
+	<%= link_to 'Upload a New Course for ' + @user.full_name, new_course_path, class: 'btn btn-primary' %>
+
+	<div class="row">&nbsp;</div>
+
+	<table class="table table-striped">
+		<tr>
+			<th>Course #</th>
+			<th>Create Date</th>
+			<th>Course Title</th>
+			<th>Earnings</th>
+			<th>Approved?</th>
+			<th>Visible?</th>
+			<th>&nbsp;</th>
+		</tr>
+		<% @courses.each do |course| %>
+			<tr>
+				<td><%= course.id %></td>
+				<td><%= course.created_at.to_date %></td>
+				<td><%= course.title %></td>
+				<td>$1000</td>
+				<td><%= course.approved ? 'yes' : 'no' %></td>
+				<td><%= course.visibility ? 'yes' : 'no' %></td>
+				<td><%= link_to 'Details', course_path(course), 
+					target: '_blank', class: 'btn btn-primary btn-sm' %>
+					<%= link_to 'Edit', edit_course_path(course), class: 'btn btn-primary btn-sm' %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+
+</div>

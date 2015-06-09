@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :uploaded, :purchased_courses]
   before_action :set_order, only: [:checkout_create, :checkout_update]
 
   def index
@@ -26,7 +26,18 @@ class UsersController < ApplicationController
   def dashboard
     @courses = current_user.courses.order('created_at DESC').take(3)
     @orders = current_user.orders.order('created_at DESC').take(3)
-    @orders_to_ship = current_user.line_items.where(shipping_status: 'pending').order('created_at DESC').take(3)
+    # user has_many courses, course has_many line_items
+    @line_items_to_ship = current_user.line_items.where(
+      item_type: 'materials', shipping_status: 'pending'
+    )
+  end
+
+  def uploaded
+    @courses = @user.courses.order('created_at DESC')
+  end
+
+  def purchased_courses
+    @orders = @user.orders
   end
 
   private

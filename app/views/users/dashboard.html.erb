@@ -11,22 +11,24 @@
 					<tr>
 						<th>ID</th>
 						<th>Date</th>
+						<th>Type</th>
 						<th>Total</th>
 						<th>Payment</th>
 						<th>Shipping</th>
 					</tr>
-					<% @orders_to_ship.each do |order| %>
+					<% @line_items_to_ship.each do |line_item| %>
 						<tr>
-							<td><%= order.id %></td>
-							<td><%= order.created_at.to_date %></td>
-							<td>$<%= order.unit_price * order.quantity %></td>
-							<td><%= order.order.pmt_status %></td>
-							<td><%= order.shipping_status %></td>
+							<td><%= line_item.id %></td>
+							<td><%= line_item.created_at.to_date %></td>
+							<td><%= line_item.item_type %></td>
+							<td>$<%= line_item.unit_price * line_item.quantity %></td>
+							<td><%= line_item.order.pmt_status %></td>
+							<td><%= line_item.shipping_status %></td>
 						</tr>
 					<% end %>
 				</table>
 			</section>
-			<%= link_to 'Manage My Orders', orders_path, class: 'btn btn-primary btn-sm' %>
+			<%= link_to 'Manage My Sales Orders', sold_line_items_path, class: 'btn btn-primary btn-sm' %>
 		</div>
 	</section>
 

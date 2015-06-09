@@ -3,10 +3,22 @@ class LineItemsController < ApplicationController
   before_action :assign_course_order, 
     only: [:create_video_line_item, :create_materials_line_item]
 
-  before_action :set_line_item, only: [:add_material, :subtract_material]
+  before_action :set_line_item, only: [:add_material, :subtract_material, :show]
+
+  def index
+    @line_items = LineItem.all.order('created_at DESC')
+  end
+
+  def show
+    
+  end
 
   def delete
     
+  end
+
+  def sold
+    @line_items = current_user.line_items
   end
 
   def create_video_line_item

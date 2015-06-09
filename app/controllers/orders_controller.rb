@@ -3,11 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :update, :checkout, :paid, :complete]
 
   def index
-    if current_user.admin === true
-      @orders = Order.all.order('created_at DESC')
-    else
-      @line_items = current_user.line_items.order('shipping_status')
-    end
+    @orders = Order.all.order('created_at DESC')
   end
 
   def show
@@ -27,7 +23,7 @@ class OrdersController < ApplicationController
 
   def complete
     @order.pmt_status = 'paid'
-    @order.complete = true
+    @order.completed = true
     if @order.update(order_params)
       redirect_to success_orders_path
       cookies.delete(:order_id)

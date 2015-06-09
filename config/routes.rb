@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :users do
     get :dashboard, on: :collection
+    get :uploaded, on: :member
+    get :purchased_courses, on: :member
   end
 
   get 'categories/index'
@@ -22,9 +24,10 @@ Rails.application.routes.draw do
 
   post 'create_video_line_item' => 'line_items#create_video_line_item'
   post 'create_materials_line_item' => 'line_items#create_materials_line_item'
-  resources :line_items, only: [:destroy] do
+  resources :line_items, only: [:index, :show, :destroy] do
     put :add_material, on: :member
     put :subtract_material, on: :member
+    get :sold, on: :collection
   end
 
   resources :courses do

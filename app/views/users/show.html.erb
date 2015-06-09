@@ -5,13 +5,13 @@
 <div class="well col-md-9 user-details">
 	<div class="row">	
 		<section class="col-md-3 text-center">
-			<%= link_to 'View User Courses', '#', class: 'btn btn-primary' %>
+			<%= link_to 'View User Courses', uploaded_user_path(@user), class: 'btn btn-primary' %>
 		</section>
 		<section class="col-md-3 text-center">
 			<%= link_to 'Upload Course for User', new_course_path(user_id: params[:id]), class: 'btn btn-primary' %>
 		</section>
 		<section class="col-md-3 text-center">
-			<%= link_to 'View User Purchases', '#', class: 'btn btn-primary' %>
+			<%= link_to 'View User Purchases', purchased_courses_user_path(@user), class: 'btn btn-primary' %>
 		</section>
 		<section class="col-md-3 text-center">
 			<%= link_to 'View User Sales Orders', '#', class: 'btn btn-primary' %>

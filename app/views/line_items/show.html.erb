@@ -1,0 +1,24 @@
+<% @page_title = 'MANAGE SALES ORDER #' + @line_item.id.to_s %>
+
+<%= render 'users/user_side_nav' %>
+
+<div class="well col-md-9">
+	<table class="table table-striped">
+		<tr>
+			<th>Course Title</th>
+			<th>Item</th>
+			<th>Quantity</th>
+			<th>Unit Price</th>
+			<th>Subtotal</th>
+			<th>Shipping Status</th>
+		</tr>
+		<tr>
+			<td><%= @line_item.course.title %></td>
+			<td><%= @line_item.item_type %></td>
+			<td><%= @line_item.quantity %></td>
+			<td>$<%= @line_item.unit_price %></td>
+			<td>$<%= @line_item.quantity * @line_item.unit_price %></td>
+			<td><%= @line_item.shipping_status %></td>
+		</tr>
+	</table>
+</div>
