@@ -58,12 +58,14 @@
 			<div class="col-md-6 text-center">
 				<h5>BUY VIDEO: </h5>
 				<p><strong>$<%= @course.video_cost %></strong></p>
-				<%= link_to 'Add To Cart', create_video_line_item_path(course_id: params[:id]), method: :post, class: 'btn btn-primary' %>
+				<%= link_to 'Add To Cart', create_video_line_item_path(course_id: params[:id]),
+					 method: :post, class: 'btn btn-primary' %>
 			</div>
 			<div class="col-md-6 text-center">
 				<h5>BUY MATERIALS: </h5>
 				<p><strong>$<%= @course.material_cost %></strong></p>
-				<%= link_to 'Add To Cart', create_materials_line_item_path(course_id: params[:id]), method: :post, class: 'btn btn-primary' %>
+				<%= link_to 'Add To Cart', create_materials_line_item_path(course_id: params[:id]),
+					 method: :post, class: 'btn btn-primary' %>
 			</div>
 
 			<div class="row">&nbsp;</div>
@@ -80,11 +82,13 @@
 	<% @courses.each do |course| %>
 	<div class="col-md-3 text-center">
 		<% unless course.featured_image.blank? %>
-			<%= image_tag course.featured_image.url(:medium), class: 'img img-thumbnail' %>
+			<%= link_to (image_tag course.featured_image.url(:medium)), 
+				course_path(course), class: 'img img-thumbnail' %>
 		<% else %>
-			<img src="http://placehold.it/230x230?text=No+Image" class='img img-thumbnail' />
+			<%= link_to (image_tag 'http://placehold.it/230x230?text=No+Image'), 
+				course_path(course), class: 'img img-thumbnail' %>
 		<% end %>
-		<h5><%= truncate course.title, length: 28, omission: '...' %></h5>
+		<h5><%= link_to (truncate course.title, length: 28, omission: '...'), course_path(course) %></h5>
 		<p>By <%= course.seller.full_name %></p>
 	</div>
 	<% end %>
