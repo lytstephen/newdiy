@@ -48,7 +48,7 @@
 							<td><%= course.id %></td>
 							<td><%= course.title %></td>
 							<td><%= course.created_at.to_date %></td>
-							<td>$1000</td>
+							<td>$<%= course.earnings %></td>
 						</tr>
 					<% end %>
 				</table>
@@ -78,7 +78,7 @@
 						<tr>
 							<td><%= order.id %></td>
 							<td><%= order.created_at.to_date %></td>
-							<td><%= order.order_total %></td>
+							<td>$<%= order.order_total %></td>
 							<td><%= order.pmt_method %></td>
 							<td><%= order.pmt_status %></td>
 						</tr>

@@ -23,7 +23,7 @@
 				<td><%= course.id %></td>
 				<td><%= course.created_at.to_date %></td>
 				<td><%= course.title %></td>
-				<td>$1000</td>
+				<td>$<%= course.earnings %></td>
 				<td><%= course.approved ? 'yes' : 'no' %></td>
 				<td><%= course.visibility ? 'yes' : 'no' %></td>
 				<td><%= link_to 'Details', course_path(course), 

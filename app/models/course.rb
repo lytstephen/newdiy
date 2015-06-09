@@ -24,6 +24,14 @@ class Course < ActiveRecord::Base
   # validates_attachment_content_type :image1, content_type: /\Aimage\/.*\Z/
   # validates_attachment_content_type :image2, content_type: /\Aimage\/.*\Z/
 
+  def earnings
+    total = 0
+    line_items.each do |line_item|
+      total += line_item.subtotal
+    end
+    return total
+  end
+
   private
 
     def ensure_not_referenced_by_any_line_item

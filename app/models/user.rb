@@ -19,6 +19,24 @@ class User < ActiveRecord::Base
     first_name + " " + last_name
   end
 
+  def earnings
+    total = 0
+    courses.each do |course|
+      course.line_items.each do |line_item|
+        total += line_item.subtotal
+      end
+    end
+    return total
+  end
+
+  def purchases
+    total = 0
+    line_items.each do |line_item|
+      total += line_item.subtotal
+    end
+    return total
+  end
+
   # def checkout
     
   # end

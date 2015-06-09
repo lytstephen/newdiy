@@ -19,8 +19,8 @@
 				<td><%= user.created_at.to_date %></td>
 				<td><%= user.first_name %></td>
 				<td><%= user.last_name %></td>
-				<td>$1000</td>
-				<td>$1000</td>
+				<td>$<%= user.earnings %></td>
+				<td>$<%= user.purchases %></td>
 				<td>
 					<%= link_to 'Details', user_path(user), class: 'btn btn-primary btn-sm' %>&nbsp;
 					<%= link_to 'Edit', edit_user_path(user), class: 'btn btn-primary btn-sm' %>
