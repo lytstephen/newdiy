@@ -19,9 +19,16 @@ class PagesController < ApplicationController
     end
   end
 
-  def payment
-    @user = current_user
-    @order = Order.find(cookies[:order_id])
+  def faq
+  end
+
+  def about
+  end
+
+  def contact
+  end
+
+  def readme
   end
 
 end

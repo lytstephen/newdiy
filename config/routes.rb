@@ -42,9 +42,11 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   get 'admin' => 'pages#admin'
-
   get 'cart' => 'pages#cart'
-  get 'payment' => 'pages#payment'
+  get 'about' => 'pages#about'
+  get 'faq' => 'pages#faq'
+  get 'contact' => 'pages#contact'
+  get 'readme' => 'pages#readme'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
