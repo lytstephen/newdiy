@@ -32,11 +32,11 @@ class CoursesController < ApplicationController
   def new
     @categories = Category.all.order('name')
     @course = Course.new
+    @user_id = params.has_key?('user_id') ? params[:user_id] : current_user.id
   end
 
   def create
     @course = Course.new(course_params)
-    @course.user_id = params[:user_id] ||= current_user.id
     if @course.save
       redirect_to course_path(@course), notice: 'The course has been created successfully!'
     else
@@ -80,7 +80,7 @@ class CoursesController < ApplicationController
   private
 
     def course_params
-      params.require(:course).permit(:title, :description, :video_link, :materials, :video_cost,
+      params.require(:course).permit(:user_id, :title, :description, :video_link, :materials, :video_cost,
         :material_cost, :featured_image, :image1, :image2, {:category_ids => []})
     end
 

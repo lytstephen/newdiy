@@ -8,7 +8,14 @@
 	<div class="col-md-7">
 
 		<section class="row text-center embed-responsive embed-responsive-16by9">
-			<iframe class="embed-responsive-item"  src="<%= @course.video_link %>"></iframe>
+			<% if @course.video_link.blank? %>
+				<div class="embed-responsive-item">
+					<h4>No Video available for this course.</h4>
+				</div>
+			<% else %>
+				<iframe class="embed-responsive-item"  src="<%= @course.video_link %>">
+				</iframe>
+			<% end %>
 		</section>
 
 		<section class="row">&nbsp;</section>

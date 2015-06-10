@@ -1,6 +1,10 @@
 <% @page_title = 'UPLOAD A COURSE' %>
 
-<%= render 'users/user_side_nav' %>
+<% if current_user.admin === true %>
+	<%= render 'users/admin_side_nav' %>
+<% else %>
+	<%= render 'users/user_side_nav' %>
+<% end %>
 
 <div class="well col-md-9">
 
@@ -8,15 +12,18 @@
 	
   <%= form_for(@course, html: {class: "form-group"}) do |f| %>
 
-  	<% if !@categories.blank? %>
-  	  <% @categories.each do |category| %>
-				<%= check_box_tag 'course[category_ids][]', category.id, 
-					@course.categories.include?(category) %>
-				<%= category.name %>
-  	  <% end %>
-  	<% else %>
-  	  
-  	<% end %>
+  	<%= hidden_field_tag "course[user_id]", "#{@user_id}" %>
+
+		<div class="field form-group">
+			<%= f.label 'Categories (check all that applies)' %><br/>
+			<%= hidden_field_tag('course[category_ids][]', nil) %>
+			<% @categories.each do |category| %>
+				<label class="category">
+					<%= check_box_tag 'course[category_ids][]', category.id, category.id.in?(@course.categories.collect(&:id)) %>
+					<span style="font-weight:normal"><%= category.name %></span>
+				</label>
+			<% end %>
+		</div>
 
     <div class="field form-group">
       <%= f.label :title, 'Course Title (5-100 characters)' %><br />
