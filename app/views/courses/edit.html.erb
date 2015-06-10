@@ -9,6 +9,17 @@
 	
   <%= form_for(@course, html: {class: "form-group", multipart: true}) do |f| %>
 
+		<div class="field form-group">
+			<%= f.label 'Categories (check all that applies)' %><br/>
+			<%= hidden_field_tag('course[category_ids][]', nil) %>
+			<% @categories.each do |category| %>
+				<label class="category">
+					<%= check_box_tag 'course[category_ids][]', category.id, category.id.in?(@course.categories.collect(&:id)) %>
+					<span style="font-weight:normal"><%= category.name %></span>
+				</label>
+			<% end %>
+		</div>
+
     <div class="field form-group">
       <%= f.label :title, 'Course Title (5-100 characters)' %><br />
       <%= f.text_field :title, autofocus: true, class: 'form-control'%>

@@ -1,5 +1,6 @@
 class Course < ActiveRecord::Base
-  belongs_to :category
+  
+  has_and_belongs_to_many :categories
   belongs_to :seller, class_name: 'User', foreign_key: 'user_id'
 
   has_many :line_items

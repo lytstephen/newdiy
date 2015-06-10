@@ -5,7 +5,11 @@ class CoursesController < ApplicationController
 
   def index
     @categories = Category.all
-    @courses = Course.all.order('created_at DESC')
+    if params[:course_id].blank?
+      @courses = Course.all.order('created_at DESC')
+    else
+      @courses = Category.find(params[:course_id]).courses
+    end
   end
 
   def show
@@ -13,7 +17,7 @@ class CoursesController < ApplicationController
   end
 
   def edit
-
+    @categories = Category.all.order('name')
   end
 
   def update
@@ -26,6 +30,7 @@ class CoursesController < ApplicationController
   end
 
   def new
+    @categories = Category.all.order('name')
     @course = Course.new
   end
 
@@ -76,7 +81,7 @@ class CoursesController < ApplicationController
 
     def course_params
       params.require(:course).permit(:title, :description, :video_link, :materials, :video_cost,
-        :material_cost, :featured_image, :image1, :image2)
+        :material_cost, :featured_image, :image1, :image2, {:category_ids => []})
     end
 
     def set_course

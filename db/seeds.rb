@@ -52,7 +52,6 @@ course.video_cost = 50
 course.materials = "Chocolate 50g\nWhite Chocloate 20g\nCocoa Powder 10g\nSugar 30g"
 course.material_cost = 150
 course.user_id = user4.id
-course.category = category
 course.save!
 
 course2 = Course.find_or_initialize_by(title: 'Origami Roses' )
@@ -62,7 +61,6 @@ course2.materials = "origami paper white x 10\norigami paper red x 10\nRibbon (c
 course2.video_cost = 100
 course2.material_cost = 200
 course2.user_id = user4.id
-course2.category = category4
 course2.save!
 
 course3 = Course.find_or_initialize_by(title: 'Fathers Day Hand Made Tie' )
@@ -72,7 +70,6 @@ course3.materials = "Leather 3sq meter\nNeddles\nHello World"
 course3.video_cost = 100
 course3.material_cost = 300
 course3.user_id = user4.id
-course3.category = category2
 course3.save!
 
 

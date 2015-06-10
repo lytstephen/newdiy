@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609101117) do
+ActiveRecord::Schema.define(version: 20150610042121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,15 @@ ActiveRecord::Schema.define(version: 20150609101117) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "categories_courses", id: false, force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "course_id"
+  end
+
+  add_index "categories_courses", ["category_id"], name: "index_categories_courses_on_category_id", using: :btree
+  add_index "categories_courses", ["course_id"], name: "index_categories_courses_on_course_id", using: :btree
+
   create_table "courses", force: :cascade do |t|
-    t.integer  "category_id"
     t.integer  "user_id"
     t.string   "title"
     t.string   "description"
@@ -50,7 +57,6 @@ ActiveRecord::Schema.define(version: 20150609101117) do
     t.datetime "image2_updated_at"
   end
 
-  add_index "courses", ["category_id"], name: "index_courses_on_category_id", using: :btree
   add_index "courses", ["user_id"], name: "index_courses_on_user_id", using: :btree
 
   create_table "line_items", force: :cascade do |t|
@@ -129,7 +135,6 @@ ActiveRecord::Schema.define(version: 20150609101117) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "courses", "categories"
   add_foreign_key "courses", "users"
   add_foreign_key "line_items", "courses"
   add_foreign_key "line_items", "orders"
