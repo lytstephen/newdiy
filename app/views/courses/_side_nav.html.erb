@@ -3,7 +3,14 @@
 		<ul class="nav nav-pills nav-stacked">
 		<li role="presentation"><%= link_to 'All Categories', courses_path %></li>
 			<% @categories.each do |category| %>
-		  	<li role="presentation"><%= link_to category.name, '?course_id=' + category.id.to_s %></li>
+				<% if category == @current_category %>
+		  		<li role="presentation" class="active">
+		  	<% else %>
+		  		<li role="presentation">
+		  	<% end %>
+		  	<%= link_to category.name, 
+		  		filter_by_cat_courses_path(category_id: category.id), remote: true %>
+		  	</li>
 			<% end %>
 		</ul>
 	</section>

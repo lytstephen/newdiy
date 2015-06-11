@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     get :remove_featured, on: :member
     get :remove_image1, on: :member
     get :remove_image2, on: :member
+    get :filter_by_cat, on: :collection
   end
 
   root 'pages#index'

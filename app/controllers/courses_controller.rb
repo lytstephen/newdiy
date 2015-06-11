@@ -12,6 +12,15 @@ class CoursesController < ApplicationController
     end
   end
 
+  def filter_by_cat
+    @category = Category.find(params[:category_id])
+    @courses = @category.courses
+    respond_to do |format|
+      format.html { redirect_to courses_path }
+      format.js { @current_category = @category }
+    end
+  end
+
   def show
     @courses = Course.where.not(id: @course.id).order('created_at DESC')
   end
