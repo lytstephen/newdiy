@@ -1,0 +1,17 @@
+<table class="table table-striped">
+	<tr>
+		<th>Coruse Title</th>
+		<th>Type</th>
+		<th>Quantity</th>
+		<th>Unit Price</th>
+		<th>Subtotal</th>
+		<th>&nbsp;</th>
+	</tr>
+	<%= render order.line_items %>
+	<tr>
+		<td colspan="3">&nbsp;</td>
+		<td>Order Total:</td>
+		<td>$<%= order.order_total %></td>
+		<td>&nbsp;</td>
+	</tr>
+</table>

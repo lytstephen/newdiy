@@ -13,39 +13,9 @@
 
 	<div class="well">
 		<section class="col-md-8 col-md-offset-2">
-			<table class="table table-striped">
-				<tr>
-					<th>Coruse Title</th>
-					<th>Type</th>
-					<th>Quantity</th>
-					<th>Unit Price</th>
-					<th>Subtotal</th>
-					<th>&nbsp;</th>
-				</tr>
-				<% @order.line_items.each do |line_item| %>
-					<tr>
-						<td><%= line_item.course.title %></td>
-						<td><%= line_item.item_type %></td>
-						<td>
-							<%= line_item.quantity %>
-							<% if line_item.item_type == 'materials' %>&nbsp;
-								<%= link_to '+', add_material_line_item_path(line_item), method: 'put', class: 'btn btn-primary btn-xsm' %>
-								<%= link_to '-', subtract_material_line_item_path(line_item), method: 'put', class: 'btn btn-primary btn-xsm' %>
-							<% end %>
-						</td>
-						<td>$<%= line_item.unit_price %></td>
-						<td>$<%= line_item.subtotal %></td>
-						<td><%= link_to 'Remove', line_item, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger btn-sm' %></td>
-					</tr>
-				<% end %>
-				<tr>
-					<td colspan="3">&nbsp;</td>
-					<td>Order Total:</td>
-					<td>$<%= @order.order_total %></td>
-					<td>&nbsp;</td>
-				</tr>
-			</table>
-
+			<div id="cart">
+				<%= render @order %>
+			</div>
 			<%= link_to 'Checkout', checkout_order_path(@order), class: 'btn btn-primary btn-lg', style: 'float:right' %>
 		</section>
 		<section class="row">&nbsp;</section>

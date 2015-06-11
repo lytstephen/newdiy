@@ -4,6 +4,7 @@ class LineItemsController < ApplicationController
     only: [:create_video_line_item, :create_materials_line_item]
 
   before_action :set_line_item, only: [:add_material, :subtract_material, :show]
+  before_action :set_order, only: [:add_material, :subtract_material]
 
   def index
     @line_items = LineItem.all.order('created_at DESC')
@@ -65,19 +66,39 @@ class LineItemsController < ApplicationController
   end
 
   def add_material
+
     @line_item.quantity += 1
-    @line_item.save
-    redirect_to cart_path
+
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to cart_path }
+        format.js
+      end
+    end
+
   end
 
   def subtract_material
     if @line_item.quantity === 1
-      @line_item.destroy
+
+      respond_to do |format|
+        if @line_item.destroy
+          format.html { redirect_to cart_path }
+          format.js { render js: "window.location.reload()" }
+        end
+      end
+
     else
+
       @line_item.quantity -= 1
-      @line_item.save
+      respond_to do |format|
+        if @line_item.save
+          format.html { redirect_to cart_path }
+          format.js
+        end
+      end
+
     end
-    redirect_to cart_path
   end
 
   def destroy
@@ -94,6 +115,10 @@ class LineItemsController < ApplicationController
 
     def set_line_item
       @line_item = LineItem.find(params[:id])
+    end
+
+    def set_order
+      @order = @line_item.order
     end
 
     def assign_course_order
