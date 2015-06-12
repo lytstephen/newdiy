@@ -1,5 +1,11 @@
 <% @page_title = 'YOUR INFORMATION' %>
 
+<ol class="breadcrumb text-center">
+  <li><%= link_to 'YOUR CART', cart_orders_path %></li>
+  <li class="active">ORDER INFORMATION</li>
+  <li>CONFIRM YOUR ORDER</li>
+</ol>
+
 <%= form_for @order, html: {class: "form-group"} do |f| %>
 
 	<div class="well">

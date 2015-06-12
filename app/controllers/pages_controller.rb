@@ -13,12 +13,6 @@ class PagesController < ApplicationController
     @orders = Order.all.order('created_at DESC').take(3)
   end
 
-  def cart
-    if cookies[:order_id]
-      @order = Order.find(cookies[:order_id])
-    end
-  end
-
   def faq
   end
 

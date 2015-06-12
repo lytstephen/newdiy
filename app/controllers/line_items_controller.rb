@@ -71,7 +71,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to cart_path }
+        format.html { redirect_to cart_orders_path }
         format.js
       end
     end
@@ -83,7 +83,7 @@ class LineItemsController < ApplicationController
 
       respond_to do |format|
         if @line_item.destroy
-          format.html { redirect_to cart_path }
+          format.html { redirect_to cart_orders_path }
           format.js { render js: "window.location.reload()" }
         end
       end
@@ -93,7 +93,7 @@ class LineItemsController < ApplicationController
       @line_item.quantity -= 1
       respond_to do |format|
         if @line_item.save
-          format.html { redirect_to cart_path }
+          format.html { redirect_to cart_orders_path }
           format.js
         end
       end
@@ -108,7 +108,7 @@ class LineItemsController < ApplicationController
       @line_item.order.destroy
       cookies.delete(:order_id)
     end
-    redirect_to cart_path, notice: 'Item successfully removed'
+    redirect_to cart_orders_path, notice: 'Item successfully removed'
   end
 
   private

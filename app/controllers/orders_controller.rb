@@ -32,6 +32,12 @@ class OrdersController < ApplicationController
     end
   end
 
+  def cart
+    if cookies[:order_id]
+      @order = Order.find(cookies[:order_id])
+    end
+  end
+
   def checkout
     if user_signed_in?
       @user = current_user

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :categories
 
   resources :orders do
+    get :cart, on: :collection
     get :checkout, on: :member
     get :confirm, on: :member
     put :complete, on: :member
@@ -43,7 +44,6 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   get 'admin' => 'pages#admin'
-  get 'cart' => 'pages#cart'
   get 'about' => 'pages#about'
   get 'faq' => 'pages#faq'
   get 'contact' => 'pages#contact'

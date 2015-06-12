@@ -228,7 +228,9 @@ label.category {
   margin-right: 30px;
 }
 
-
+.breadcrumb > li + li:before {
+  content: '>> ';
+}
 
 
 
