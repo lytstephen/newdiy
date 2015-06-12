@@ -11,7 +11,6 @@ ready = function() {
 	// if billing_same is checked, disable shipping fields
 	if ($('#user_billing_same').is(':checked')) {
 		shipping_fields.forEach(function(e, i){
-			$(e).val( $(billing_fields[i]).val() );
 			$(e).prop('disabled', true)
 		});
 	}
@@ -22,7 +21,7 @@ ready = function() {
 		// if check, fill shipping fields with billing, and disable all shipping fields
 		if ($('#user_billing_same').is(':checked')) {
 			shipping_fields.forEach(function(e, i){
-				$(e).val( $(billing_fields[i]).val() );
+				$(e).val('');
 				$(e).prop('disabled', true)
 			});
 		}
@@ -30,21 +29,10 @@ ready = function() {
 		// if uncheck, enable all shipping fields and delete all values
 		if (!$('#user_billing_same').is(':checked')) {
 			shipping_fields.forEach(function(e, i){
-				$(e).val('');
 				$(e).prop('disabled', false)
 			});
 		}
 
-	});
-
-	// if "same as billing" is checked, any billing field changes
-	// will change the corresponding shipping field
-	shipping_fields.forEach(function(e,i){
-		$(billing_fields[i]).change(function() {
-			if ($('#user_billing_same').is(':checked')) {
-				$(e).val( $(billing_fields[i]).val() );
-			}
-		});
 	});
 
 }

@@ -65,7 +65,8 @@ class OrdersController < ApplicationController
         :shipping_add1, :shipping_add2, :shipping_city,
         :shipping_state, :shipping_zip, :shipping_country,
         :billing_add1, :billing_add2, :billing_city,
-        :billing_state, :billing_zip, :billing_country )
+        :billing_state, :billing_zip, :billing_country,
+        :billing_same )
     end
 
 end

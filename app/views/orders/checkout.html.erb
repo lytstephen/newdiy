@@ -1,101 +1,118 @@
 <% @page_title = 'YOUR INFORMATION' %>
 
-<div class="well">
+<%= form_for @order, html: {class: "form-group"} do |f| %>
+
+	<div class="well">
 
 	<div class="row">&nbsp;</div>
-
-	<%= form_for @order, html: {class: "form-group"} do |f| %>
 
     <%= render 'layouts/errors', obj: @order %>
 
 		<section class="col-md-4">
 			<div class="field form-group">
 	      <%= f.label :first_name %><br />
-	      <%= f.text_field :first_name, autofocus: true, class: 'form-control'%>
+	      <%= f.text_field :first_name, autofocus: true, class: 'form-control',
+	      	value: current_user.first_name %>
 	    </div>
 
 			<div class="field form-group">
 	      <%= f.label :last_name %><br />
-	      <%= f.text_field :last_name, autofocus: true, class: 'form-control'%>
+	      <%= f.text_field :last_name, autofocus: true, class: 'form-control',
+	      	value: current_user.last_name %>
 	    </div>
 
 			<div class="field form-group">
 	      <%= f.label :email, 'Email Address' %><br />
-	      <%= f.text_field :email, autofocus: true, class: 'form-control'%>
+	      <%= f.text_field :email, autofocus: true, class: 'form-control',
+	      	value: current_user.email %>
 	    </div>
 
 		</section>
 
 		<section class="col-md-4">
 
-			<div class="field form-group">
-	      <%= f.label :shipping_add1, 'Shipping Address' %><br />
-	      <%= f.text_field :shipping_add1, autofocus: true, class: 'form-control address1'%>
-	      <%= f.text_field :shipping_add2, autofocus: true, class: 'form-control'%>
-	    </div>
-
-	    <div class="field form-group">
-	      <%= f.label :shipping_city, 'Town/City' %><br />
-	      <%= f.text_field :shipping_city, autofocus: true, class: 'form-control'%>
-	    </div>
-			
-			<div class="row">
-	    	<section class="field form-group col-md-6">
-		      <%= f.label :shipping_state, 'State' %><br />
-		      <%= f.text_field :shipping_state, autofocus: true, class: 'form-control'%>
-	    	</section>
-
-	    	<section class="field form-group col-md-6">
-		      <%= f.label :shipping_zip, 'Zip' %><br />
-		      <%= f.text_field :shipping_zip, autofocus: true, class: 'form-control'%>
-	    	</section>
-	    </div>
-
-    	<div class="field form-group">
-	      <%= f.label :shipping_country, 'Country' %><br />
-	      <%= f.text_field :shipping_country, autofocus: true, class: 'form-control'%>
-    	</div>
-
-    	<p class="small">(You don't have to fill out shipping Address if you are not ordering materials)</p>
-		</section>
-
-		<section class="col-md-4">
 			<div class="field form-group">
 	      <%= f.label :billing_add1, 'Billing Address' %><br />
-	      <%= f.text_field :billing_add1, autofocus: true, class: 'form-control address1'%>
-	      <%= f.text_field :billing_add2, autofocus: true, class: 'form-control'%>
+	      <%= f.text_field :billing_add1, autofocus: true, class: 'form-control address1',
+	      	value: current_user.billing_add1 %>
+	      <%= f.text_field :billing_add2, autofocus: true, class: 'form-control',
+	      	value: current_user.billing_add2 %>
 	    </div>
 
 	    <div class="field form-group">
 	      <%= f.label :billing_city, 'Town/City' %><br />
-	      <%= f.text_field :billing_city, autofocus: true, class: 'form-control'%>
+	      <%= f.text_field :billing_city, autofocus: true, class: 'form-control',
+	      	value: current_user.billing_city %>
 	    </div>
 			
 			<div class="row">
 	    	<section class="field form-group col-md-6">
 		      <%= f.label :billing_state, 'State' %><br />
-		      <%= f.text_field :billing_state, autofocus: true, class: 'form-control'%>
+		      <%= f.text_field :billing_state, autofocus: true, class: 'form-control',
+		      	value: current_user.billing_state %>
 	    	</section>
 
 	    	<section class="field form-group col-md-6">
 		      <%= f.label :billing_zip, 'Zip' %><br />
-		      <%= f.text_field :billing_zip, autofocus: true, class: 'form-control'%>
+		      <%= f.text_field :billing_zip, autofocus: true, class: 'form-control',
+		      	value: current_user.billing_zip %>
 	    	</section>
 	    </div>
 
     	<div class="field form-group">
 	      <%= f.label :billing_country, 'Country' %><br />
-	      <%= f.text_field :billing_country, autofocus: true, class: 'form-control'%>
+	      <%= f.text_field :billing_country, autofocus: true, class: 'form-control',
+	      	value: current_user.billing_country %>
+    	</div>
+
+		</section>
+
+		<section class="col-md-4">
+			<div class="field form-group">
+	      <%= f.label :shipping_add1, 'Shipping Address' %>&nbsp;
+					<%= f.check_box :billing_same %>&nbsp;
+					<%= f.label :billing_same, 'same as billing', class: 'small billing_same' %>
+	      <br />
+	      <%= f.text_field :shipping_add1, autofocus: true, class: 'form-control address1',
+	      	value: current_user.shipping_add1 %>
+	      <%= f.text_field :shipping_add2, autofocus: true, class: 'form-control',
+	      	value: current_user.shipping_add2 %>
+	    </div>
+
+	    <div class="field form-group">
+	      <%= f.label :shipping_city, 'Town/City' %><br />
+	      <%= f.text_field :shipping_city, autofocus: true, class: 'form-control',
+	      	value: current_user.shipping_city %>
+	    </div>
+			
+			<div class="row">
+	    	<section class="field form-group col-md-6">
+		      <%= f.label :shipping_state, 'State' %><br />
+		      <%= f.text_field :shipping_state, autofocus: true, class: 'form-control',
+		      	value: current_user.shipping_state %>
+	    	</section>
+
+	    	<section class="field form-group col-md-6">
+		      <%= f.label :shipping_zip, 'Zip' %><br />
+		      <%= f.text_field :shipping_zip, autofocus: true, class: 'form-control',
+		      	value: current_user.shipping_zip %>
+	    	</section>
+	    </div>
+
+    	<div class="field form-group">
+	      <%= f.label :shipping_country, 'Country' %><br />
+	      <%= f.text_field :shipping_country, autofocus: true, class: 'form-control',
+	      	value: current_user.shipping_country %>
     	</div>
 		</section>
 
 		<div class="row">&nbsp;</div>
 
-	</div>
+	</div><!-- end div.well -->
 
 	<%= f.submit 'Proceed to Checkout', class: 'btn btn-primary btn-lg', style: 'float:right' %>
 
-	<% end %>
+<% end %>
 
 
 

@@ -37,48 +37,80 @@
 					<td colspan="2"><%= @user.last_name %></td>
 					<td colspan="2"><%= @user.email %></td>
 				</tr>
+			</table>
+		</section>
+	</div>
+	<div class="row">
+		<section class="col-md-6">
+			<table class="table table-striped">
 				<tr>
-					<th colspan="2">Shipping Address:</td>
 					<th colspan="2">Billing Address:</td>
 				</tr>
 				<tr>
-					<td colspan="2"><%= @user.shipping_add1 %></td>
 					<td colspan="2"><%= @user.billing_add1 %></td>
 				</tr>
 				<tr>
-					<td colspan="2"><%= @user.shipping_add2 %></td>
 					<td colspan="2"><%= @user.billing_add2 %></td>
 				</tr>
 				<tr>
 					<th colspan="2">Town/City</td>
-					<th colspan="2">Town/City</td>
 				</tr>
 				<tr>
-					<td colspan="2"><%= @user.shipping_city %></td>
 					<td colspan="2"><%= @user.billing_city %></td>
 				</tr>
 				<tr>
 					<th>State</td>
 					<th>Zip</th>
-					<th>State</td>
-					<th>Zip</th>
 				</tr>
 				<tr>
-					<td><%= @user.shipping_state %></td>
-					<td><%= @user.shipping_zip %></td>
 					<td><%= @user.billing_state %></td>
 					<td><%= @user.billing_zip %></td>
 				</tr>
 				<tr>
 					<th colspan="2">Country:</td>
-					<th colspan="2">Country:</td>
 				</tr>
 				<tr>
-					<td colspan="2"><%= @user.shipping_country %></td>
 					<td colspan="2"><%= @user.billing_country %></td>
 				</tr>
 			</table>
 			<%= link_to 'Edit Account', edit_user_path(@user), class: 'btn btn-primary' %>
+		</section>
+		<section class="col-md-6">
+			<table class="table table-striped">
+				<tr>
+					<th colspan="2">Shipping Address:</td>
+				</tr>
+				<% if @user.billing_same === true %>
+					<tr><td>Same as Billing</td></tr>
+				<% else %>
+					<tr>
+						<td colspan="2"><%= @user.shipping_add1 %></td>
+					</tr>
+					<tr>
+						<td colspan="2"><%= @user.shipping_add2 %></td>
+					</tr>
+					<tr>
+						<th colspan="2">Town/City</td>
+					</tr>
+					<tr>
+						<td colspan="2"><%= @user.shipping_city %></td>
+					</tr>
+					<tr>
+						<th>State</td>
+						<th>Zip</th>
+					</tr>
+					<tr>
+						<td><%= @user.shipping_state %></td>
+						<td><%= @user.shipping_zip %></td>
+					</tr>
+					<tr>
+						<th colspan="2">Country:</td>
+					</tr>
+					<tr>
+						<td colspan="2"><%= @user.shipping_country %></td>
+					</tr>
+				<% end %>
+			</table>
 		</section>
 	</div>
 

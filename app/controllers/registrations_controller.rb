@@ -5,6 +5,7 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
     def configure_permitted_parameters
+      
       devise_parameter_sanitizer.for(:sign_up) do |u|
         u.permit(:email, :password, :current_password,
         :password_confirmation, :first_name, :last_name,
@@ -13,6 +14,7 @@ class RegistrationsController < Devise::RegistrationsController
         :billing_add1, :billing_add2, :billing_city,
         :billing_state, :billing_zip, :billing_country)
       end
+
       devise_parameter_sanitizer.for(:account_update) do |u|
         u.permit(:email, :password, :current_password,
         :password_confirmation, :first_name, :last_name,

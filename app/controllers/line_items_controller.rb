@@ -135,10 +135,7 @@ class LineItemsController < ApplicationController
         # @order = Order.find_by(user_id: current_user.id, completed: false)
         # if he didn't have unfinished order, let's create one for him
         # if @order.nil?
-          @order = Order.create(user_id: current_user.id,
-            first_name: current_user.first_name,
-            last_name: current_user.last_name,
-            email: current_user.email)
+          @order = Order.create(user_id: current_user.id)
         # end
         # and set the cookies for him
         cookies[:order_id] = @order.id

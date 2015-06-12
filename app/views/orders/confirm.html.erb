@@ -48,20 +48,6 @@
 
 	<section class="col-md-4">
 		<table class="table table-striped">
-			<tr><th colspan="2">Shipping Address</th></tr>
-			<tr><td colspan="2"><%= @order.shipping_add1 %></td></tr>
-			<tr><td colspan="2"><%= @order.shipping_add2 %></td></tr>
-			<tr><th colspan="2">Town / City</th></tr>
-			<tr><td colspan="2"><%= @order.shipping_city %></td></tr>
-			<tr><th>State</th><th>ZIP<th></tr>
-			<tr><td><%= @order.shipping_state %></td><td><%= @order.shipping_zip %></tr>
-			<tr><th colspan="2">Country</th></tr>
-			<tr><td colspan="2"><%= @order.shipping_country %></td></tr>
-		</table>
-	</section>
-
-	<section class="col-md-4">
-		<table class="table table-striped">
 			<tr><th colspan="2">Billing Address</th></tr>
 			<tr><td colspan="2"><%= @order.billing_add1 %></td></tr>
 			<tr><td colspan="2"><%= @order.billing_add2 %></td></tr>
@@ -71,6 +57,24 @@
 			<tr><td><%= @order.billing_state %></td><td><%= @order.billing_zip %></tr>
 			<tr><th colspan="2">Country</th></tr>
 			<tr><td colspan="2"><%= @order.billing_country %></td></tr>
+		</table>
+	</section>
+
+	<section class="col-md-4">
+		<table class="table table-striped">
+			<tr><th colspan="2">Shipping Address</th></tr>
+			<% if @order.billing_same == true %>
+				<tr><td colspan="2">Same as Billing</td></tr>
+			<% else %>
+				<tr><td colspan="2"><%= @order.shipping_add1 %></td></tr>
+				<tr><td colspan="2"><%= @order.shipping_add2 %></td></tr>
+				<tr><th colspan="2">Town / City</th></tr>
+				<tr><td colspan="2"><%= @order.shipping_city %></td></tr>
+				<tr><th>State</th><th>ZIP<th></tr>
+				<tr><td><%= @order.shipping_state %></td><td><%= @order.shipping_zip %></tr>
+				<tr><th colspan="2">Country</th></tr>
+				<tr><td colspan="2"><%= @order.shipping_country %></td></tr>
+			<% end %>
 		</table>
 	</section>
 
