@@ -39,12 +39,15 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    @user = current_user
-    @order.update(user_id: current_user.id)
+    @order.user_id = current_user.id
+    @order.first_name = current_user.first_name
+    @order.last_name = current_user.last_name
+    @order.email = current_user.email
+    @order.save
   end
 
   def checkout_signup
-    @user = User.new
+
   end
 
   def confirm
