@@ -10,11 +10,15 @@
 		<section class="row text-center embed-responsive embed-responsive-16by9">
 			<% if @course.video_link.blank? %>
 				<div class="embed-responsive-item">
-					<h4>No Video available for this course.</h4>
+					<h3 class="video_message">No Video available for this course.</h3>
 				</div>
-			<% else %>
+			<% elsif @user_has_bought_video == true %>
 				<iframe class="embed-responsive-item"  src="<%= @course.video_link %>">
 				</iframe>
+			<% else %>
+				<div class="embed-responsive-item">
+					<h3 class="video_message">You need to purchase this video to view it</h3>
+				</div>
 			<% end %>
 		</section>
 

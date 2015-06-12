@@ -208,6 +208,13 @@ hr {
   border-radius: 8px;
 }
 
+.embed-responsive-item > .video_message {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-55%);
+  width: 100%;
+}
+
 .title_left {
   float:left;
 
