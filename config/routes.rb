@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :orders do
     get :cart, on: :collection
     get :checkout, on: :member
+    get :checkout_signup, on: :member
     get :confirm, on: :member
     put :complete, on: :member
     get :purchase_history, on: :collection

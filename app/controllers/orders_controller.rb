@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   
-  before_action :set_order, only: [:show, :update, :checkout, :paid, :complete]
+  before_action :set_order, only: [:show, :update, :checkout, :checkout_signup, :paid, :complete]
 
   def index
     @orders = Order.all.order('created_at DESC')
@@ -39,15 +39,12 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    if user_signed_in?
-      @user = current_user
-      @order.update(user_id: current_user.id,
-        first_name: current_user.first_name,
-        last_name: current_user.last_name,
-        email: current_user.email)
-    else
-      @user = User.new
-    end
+    @user = current_user
+    @order.update(user_id: current_user.id)
+  end
+
+  def checkout_signup
+    @user = User.new
   end
 
   def confirm

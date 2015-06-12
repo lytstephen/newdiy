@@ -22,7 +22,13 @@
 			<div id="cart">
 				<%= render @order %>
 			</div>
-			<%= link_to 'Checkout', checkout_order_path(@order), class: 'btn btn-primary btn-lg', style: 'float:right' %>
+			<% if user_signed_in? %>
+				<%= link_to 'Checkout', checkout_order_path(@order), class: 'btn btn-primary btn-lg', 
+					style: 'float:right' %>
+			<% else %>
+				<%= link_to 'Checkout', checkout_signup_order_path(@order), class: 'btn btn-primary btn-lg', 
+					style: 'float:right' %>
+			<% end %>
 		</section>
 		<section class="row">&nbsp;</section>
 	</div>
