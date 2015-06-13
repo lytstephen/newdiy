@@ -34,16 +34,11 @@ user4.password = '12345678'
 user4.admin = 'false'
 user4.save!
 
-category = Category.find_or_initialize_by(name: 'Valentines Day')
-category.save!
-category2 = Category.find_or_initialize_by(name: 'Fathers Day')
-category2.save!
-category3 = Category.find_or_initialize_by(name: 'Birthday')
-category3.save!
-category4 = Category.find_or_initialize_by(name: 'Anniversaries')
-category4.save!
-category5 = Category.find_or_initialize_by(name: 'Mothers Day')
-category5.save!
+category = Category.find_or_create_by!(name: 'Valentines Day')
+category2 = Category.find_or_create_by!(name: 'Fathers Day')
+category3 = Category.find_or_create_by!(name: 'Birthday')
+category4 = Category.find_or_create_by!(name: 'Anniversaries')
+category5 = Category.find_or_create_by!(name: 'Mothers Day')
 
 course = Course.find_or_initialize_by(title: 'Valentine Hand Made Chocolate')
 course.description = 'Make delicious chocolate for your special someone!'

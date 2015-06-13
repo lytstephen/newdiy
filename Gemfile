@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby "2.2.2"
 
+gem 'pry-rails'
+
 gem 'devise', '~> 3.5.1'
 
 gem "paperclip", "~> 4.2"

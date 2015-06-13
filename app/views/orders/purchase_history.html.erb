@@ -12,14 +12,14 @@
 			<th>Payment Status</th>
 			<th>&nbsp;</th>
 		</tr>
-		<% @orders.each do |order| %>
+		<% @purchases.each do |purchase| %>
 			<tr>
-				<td><%= order.id %></td>
-				<td><%= order.created_at.to_date %></td>
-				<td><%= order.order_total %></td>
-				<td><%= order.pmt_method %></td>
-				<td><%= order.pmt_status %></td>
-				<td><%= link_to 'Details', order_path(order), class: 'btn btn-primary btn-sm' %></td>
+				<td><%= purchase.id %></td>
+				<td><%= purchase.created_at.to_date %></td>
+				<td>$<%= purchase.order_total %></td>
+				<td><%= purchase.pmt_method %></td>
+				<td><%= purchase.pmt_status %></td>
+				<td><%= link_to 'Details', order_path(purchase), class: 'btn btn-primary btn-sm' %></td>
 			</tr>
 		<% end %>
 	</table>

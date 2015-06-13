@@ -25,11 +25,10 @@ class UsersController < ApplicationController
 
   def dashboard
     @courses = current_user.courses.order('created_at DESC').take(3)
-    @orders = current_user.orders.order('created_at DESC').take(3)
-    # user has_many courses, course has_many line_items
-    @line_items_to_ship = current_user.line_items.where(
+    @line_items_to_ship = current_user.sold_line_items.where(
       item_type: 'materials', shipping_status: 'pending'
     )
+    @purchases = current_user.purchases.take(3)
   end
 
   def uploaded
@@ -37,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def purchased_courses
-    @orders = @user.orders
+    @orders = @user.purchases.order('created_at')
   end
 
   private

@@ -24,7 +24,7 @@ class CoursesController < ApplicationController
   def show
     @courses = Course.where.not(id: @course.id).order('created_at DESC')
     if user_signed_in?
-      @user_has_bought_video = current_user.line_items.any? {|u| u.course_id == @course.id and u.item_type == 'video'}
+      @user_has_bought_video = current_user.purchased_line_items.any? {|u| u.course_id == @course.id and u.item_type == 'video'}
     end
   end
 

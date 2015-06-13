@@ -5,8 +5,9 @@
 <div class="well col-md-9">
 	<table class="table table-striped">
 		<tr>
-			<th>ID</th>
+			<th>Order #</th>
 			<th>Date</th>
+			<th>Course</th>
 			<th>Type</th>
 			<th>Total</th>
 			<th>Payment</th>
@@ -15,8 +16,9 @@
 		</tr>
 		<% @line_items.each do |line_item| %>
 			<tr>
-				<td><%= line_item.id %></td>
+				<td><%= line_item.order.id %></td>
 				<td><%= line_item.created_at.to_date %></td>
+				<td><%= truncate line_item.course.title, length: 20, omission: '...' %></td>
 				<td><%= line_item.item_type %></td>
 				<td>$<%= line_item.unit_price * line_item.quantity %></td>
 				<td><%= line_item.order.pmt_status %></td>

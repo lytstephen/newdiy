@@ -56,7 +56,7 @@ class OrdersController < ApplicationController
   end
 
   def purchase_history
-    @orders = current_user.orders.order('created_at')
+    @purchases = current_user.purchases
   end
 
   private

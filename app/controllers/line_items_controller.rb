@@ -11,7 +11,7 @@ class LineItemsController < ApplicationController
   end
 
   def show
-    
+    @order = @line_item.order
   end
 
   def delete
@@ -19,7 +19,7 @@ class LineItemsController < ApplicationController
   end
 
   def sold
-    @line_items = current_user.line_items
+    @line_items = current_user.sold_line_items.order('item_type, shipping_status')
   end
 
   def create_video_line_item

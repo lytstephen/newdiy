@@ -1,24 +1,78 @@
-<% @page_title = 'MANAGE SALES ORDER #' + @line_item.id.to_s %>
+<% @page_title = 'MANAGE SALES ORDER #' + @order.id.to_s %>
 
 <%= render 'users/user_side_nav' %>
 
 <div class="well col-md-9">
 	<table class="table table-striped">
 		<tr>
+			<th>Order Date</th>
 			<th>Course Title</th>
 			<th>Item</th>
-			<th>Quantity</th>
+			<th>Qty</th>
 			<th>Unit Price</th>
 			<th>Subtotal</th>
+			<th>Payment</th>
 			<th>Shipping Status</th>
 		</tr>
 		<tr>
-			<td><%= @line_item.course.title %></td>
+			<td><%= @order.created_at.to_date %></td>
+			<td><%= truncate @line_item.course.title, length: 20, omission: '...' %></td>
 			<td><%= @line_item.item_type %></td>
 			<td><%= @line_item.quantity %></td>
 			<td>$<%= @line_item.unit_price %></td>
 			<td>$<%= @line_item.quantity * @line_item.unit_price %></td>
+			<td><%= @order.pmt_status %></td>
 			<td><%= @line_item.shipping_status %></td>
 		</tr>
 	</table>
+
+	<section class="row">&nbsp;</section>
+
+	<section class="col-md-12"><p><strong>Buyer Details:</strong></p></section>
+
+	<section class="col-md-4">
+		<table class="table table-striped">
+			<tr><th>First Name</th></tr>
+			<tr><td><%= @order.first_name %></td></tr>
+			<tr><th>Last Name</th></tr>
+			<tr><td><%= @order.last_name %></td></tr>
+			<tr><th>Email Address</th></tr>
+			<tr><td><%= @order.email %></td></tr>
+		</table>
+	</section>
+
+	<section class="col-md-4">
+		<table class="table table-striped">
+			<tr><th colspan="2">Billing Address</th></tr>
+			<tr><td colspan="2"><%= @order.billing_add1 %></td></tr>
+			<tr><td colspan="2"><%= @order.billing_add2 %></td></tr>
+			<tr><th colspan="2">Town / City</th></tr>
+			<tr><td colspan="2"><%= @order.billing_city %></td></tr>
+			<tr><th>State</th><th>ZIP<th></tr>
+			<tr><td><%= @order.billing_state %></td><td><%= @order.billing_zip %></tr>
+			<tr><th colspan="2">Country</th></tr>
+			<tr><td colspan="2"><%= @order.billing_country %></td></tr>
+		</table>
+	</section>
+
+	<section class="col-md-4">
+		<table class="table table-striped">
+			<tr><th colspan="2">Shipping Address</th></tr>
+			<% if @order.billing_same == true %>
+				<tr><td colspan="2">Same as Billing</td></tr>
+			<% else %>
+				<tr><td colspan="2"><%= @order.shipping_add1 %></td></tr>
+				<tr><td colspan="2"><%= @order.shipping_add2 %></td></tr>
+				<tr><th colspan="2">Town / City</th></tr>
+				<tr><td colspan="2"><%= @order.shipping_city %></td></tr>
+				<tr><th>State</th><th>ZIP<th></tr>
+				<tr><td><%= @order.shipping_state %></td><td><%= @order.shipping_zip %></tr>
+				<tr><th colspan="2">Country</th></tr>
+				<tr><td colspan="2"><%= @order.shipping_country %></td></tr>
+			<% end %>
+		</table>
+	</section>
+
+	<div class="row">&nbsp;</div>
+
 </div>

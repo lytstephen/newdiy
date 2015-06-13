@@ -4,10 +4,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :courses
-  has_many :orders
+  # buyer
+  has_many :purchases, class_name: 'Order'
+  has_many :purchased_line_items, through: :purchases, source: :line_items
+  has_many :purchase_courses, through: :purchased_line_items, source: :course
 
-  has_many :line_items, through: :orders
+  # seller
+  has_many :courses
+  has_many :sold_line_items, through: :courses, source: :line_items
+  has_many :sales_orders, through: :sold_line_items, source: :order
 
   # validates_presence_of :first_name, :last_name,
   #       :shipping_add1, :shipping_add2,
@@ -29,9 +34,9 @@ class User < ActiveRecord::Base
     return total
   end
 
-  def purchases
+  def purchase_amount
     total = 0
-    line_items.each do |line_item|
+    purchased_line_items.each do |line_item|
       total += line_item.subtotal
     end
     return total
