@@ -1,7 +1,6 @@
 class Admin::UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update, :uploaded, :purchased_courses]
-  before_action :set_order, only: [:checkout_create, :checkout_update]
+  before_action :set_user, only: [:show, :edit, :update]
 
   def index
     @users = User.all.order('created_at DESC')
@@ -33,10 +32,6 @@ class Admin::UsersController < ApplicationController
 
   def uploaded
     @courses = @user.courses.order('created_at DESC')
-  end
-
-  def purchased_courses
-    @orders = @user.purchases.order('created_at')
   end
 
   private

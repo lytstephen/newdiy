@@ -2,10 +2,6 @@ class OrdersController < ApplicationController
   
   before_action :set_order, only: [:show, :update, :checkout, :checkout_signup, :paid, :complete]
 
-  def index
-    @orders = Order.all.order('created_at DESC')
-  end
-
   def show
     
   end

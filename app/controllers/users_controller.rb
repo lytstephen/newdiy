@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update, :uploaded, :purchased_courses]
-  before_action :set_order, only: [:checkout_create, :checkout_update]
+  before_action :set_user, only: [:purchased_courses]
 
   def dashboard
     @courses = current_user.courses.order('created_at DESC').take(3)

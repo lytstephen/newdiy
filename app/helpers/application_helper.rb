@@ -8,5 +8,12 @@ module ApplicationHelper
       return 0;
     end
   end
+
+  def is_admin?
+    if user_signed_in?
+      user = User.find(current_user.id)
+      return user.admin
+    end
+  end
   
 end
