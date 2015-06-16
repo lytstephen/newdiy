@@ -44,7 +44,7 @@ class CoursesController < ApplicationController
   def new
     @categories = Category.all.order('name')
     @course = Course.new
-    @user_id = params.has_key?('user_id') ? params[:user_id] : current_user.id
+    @user_id = current_user.id
   end
 
   def create
@@ -58,14 +58,6 @@ class CoursesController < ApplicationController
 
   def manage
     @courses = current_user.courses
-  end
-
-  def admin_manage
-    @courses = Course.all.order('created_at DESC')
-  end
-
-  def admin_upload
-    redirect_to users_path, alert: 'Please click "details" on a user to upload for him'
   end
 
   def remove_featured

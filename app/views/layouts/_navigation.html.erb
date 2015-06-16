@@ -26,7 +26,7 @@
         <%= link_to 'View Cart (' + items_in_cart.to_s + ')', cart_orders_path, class: 'btn btn-primary btn-sm' %>
         <% if user_signed_in? %>
           <% if current_user.admin === true %>
-            <%= link_to 'Admin Dashboard', admin_path, class: 'btn btn-primary btn-sm' %>
+            <%= link_to 'Admin Dashboard', admin_index_path, class: 'btn btn-primary btn-sm' %>
           <% else %>
             <%= link_to 'User Dashboard', dashboard_users_path, class: 'btn btn-primary btn-sm' %>
           <% end %>

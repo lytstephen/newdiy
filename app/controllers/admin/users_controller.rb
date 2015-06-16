@@ -1,7 +1,27 @@
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update, :uploaded, :purchased_courses]
   before_action :set_order, only: [:checkout_create, :checkout_update]
+
+  def index
+    @users = User.all.order('created_at DESC')
+  end
+
+  def show
+
+  end
+
+  def edit
+    
+  end
+
+  def update
+    if @user.update_without_password(user_params)
+      redirect_to user_path(@user), notice: 'User updated successfully!'
+    else
+      render 'edit'
+    end
+  end
 
   def dashboard
     @courses = current_user.courses.order('created_at DESC').take(3)
@@ -9,6 +29,10 @@ class UsersController < ApplicationController
       item_type: 'materials', shipping_status: 'pending'
     )
     @purchases = current_user.purchases.take(3)
+  end
+
+  def uploaded
+    @courses = @user.courses.order('created_at DESC')
   end
 
   def purchased_courses

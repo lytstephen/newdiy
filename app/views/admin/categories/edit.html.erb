@@ -1,10 +1,10 @@
 <% @page_title = 'ADMIN - UPDATE CATEGORY: ' + @category.name %>
 
-<%= render 'users/admin_side_nav' %>
+<%= render 'admin/side_nav' %>
 
 <div class="well col-md-9">
 
-	<%= form_for @category, html: {class: 'form-group col-md-6'} do |f| %>
+	<%= form_for @category, url: { controller: 'admin/categories', action: 'update' }, html: {class: 'form-group col-md-6'} do |f| %>
 		<div class="form-group">
 			<%= f.label :name, 'Name' %>
 	  	<%= f.text_field :name, autofocus: true, class: 'form-control' %>

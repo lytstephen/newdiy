@@ -1,6 +1,6 @@
 <% @page_title = 'ADMIN - DETAILS USER #' + @user.id.to_s %>
 
-<%= render 'admin_side_nav' %>
+<%= render 'admin/side_nav' %>
 
 <div class="well col-md-9 user-details">
 	<div class="row">	
@@ -8,7 +8,7 @@
 			<%= link_to 'View User Courses', uploaded_user_path(@user), class: 'btn btn-primary' %>
 		</section>
 		<section class="col-md-3 text-center">
-			<%= link_to 'Upload Course for User', new_course_path(user_id: params[:id]), class: 'btn btn-primary' %>
+			<%= link_to 'Upload Course for User', new_admin_course_path(user_id: params[:id]), class: 'btn btn-primary' %>
 		</section>
 		<section class="col-md-3 text-center">
 			<%= link_to 'View User Purchases', purchased_courses_user_path(@user), class: 'btn btn-primary' %>

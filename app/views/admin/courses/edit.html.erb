@@ -1,14 +1,14 @@
-<% @page_title = 'UPLOAD A COURSE' %>
+<% @page_title = 'EDIT COURSE # ' + @course.id.to_s %>
+<% @title_right = link_to 'View Course', course_path(@course), target: '_blank', class: 'btn btn-primary' %>
 
-<%= render 'users/user_side_nav' %>
+<%= render 'admin/side_nav' %>
 
 <div class="well col-md-9">
 
 	<%= render 'layouts/errors', obj: @course %>
 	
-  <%= form_for(@course, html: {class: "form-group"}) do |f| %>
-
-  	<%= hidden_field_tag "course[user_id]", "#{@user_id}" %>
+  <%= form_for(@course, url: { controller: 'admin/courses', action: 'update' }, 
+  	html: {class: "form-group", multipart: true}) do |f| %>
 
 		<div class="field form-group">
 			<%= f.label 'Categories (check all that applies)' %><br/>
@@ -58,7 +58,7 @@
 				<%= f.label :featured_image %><br/>
 				<% unless @course.featured_image.blank? %>
 					<%= image_tag @course.featured_image.url(:thumbnail), class: 'img img-thumbnail' %><br/>&nbsp;
-	    	<%= link_to 'Remove Featured Image', remove_featured_course_path,
+	    	<%= link_to 'Remove Featured Image', remove_featured_admin_course_path,
 	    		class: 'btn btn-primary btn-xsm btn-danger' %><br/>&nbsp;
 	    	<% else %>
 	    		<%= f.file_field :featured_image %>
@@ -69,7 +69,7 @@
 				<%= f.label :image1 %><br/>
 				<% unless @course.image1.blank? %>
 					<%= image_tag @course.image1.url(:thumbnail), class: 'img img-thumbnail' %><br/>&nbsp;
-	    	<%= link_to 'Remove Image 1', remove_image1_course_path,
+	    	<%= link_to 'Remove Image 1', remove_image1_admin_course_path,
 	    		class: 'btn btn-primary btn-xsm btn-danger' %><br/>&nbsp;
 	    	<% else %>
 	    		<%= f.file_field :image1 %>
@@ -80,7 +80,7 @@
 				<%= f.label :image2 %><br/>
 				<% unless @course.image2.blank? %>
 					<%= image_tag @course.image2.url(:thumbnail), class: 'img img-thumbnail' %><br/>&nbsp;
-	    	<%= link_to 'Remove Image 2', remove_image2_course_path,
+	    	<%= link_to 'Remove Image 2', remove_image2_admin_course_path,
 	    		class: 'btn btn-primary btn-xsm btn-danger' %><br/>&nbsp;
 	    	<% else %>
 	    		<%= f.file_field :image2 %>
@@ -91,7 +91,7 @@
 		<div class="row">&nbsp;</div>
 
     <div class="actions">
-      <%= f.submit "Create Course", class: 'btn btn-primary' %>
+      <%= f.submit "Update Course", class: 'btn btn-primary' %>
     </div>
   <% end %>
 

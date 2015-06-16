@@ -1,6 +1,6 @@
 <% @page_title = 'ADMIN - MANAGE USERS' %>
 
-<%= render 'admin_side_nav' %>
+<%= render 'admin/side_nav' %>
 
 <section class="well col-md-9">
 	<table class="table table-striped">
@@ -22,8 +22,8 @@
 				<td>$<%= user.earnings %></td>
 				<td>$<%= user.purchase_amount %></td>
 				<td>
-					<%= link_to 'Details', user_path(user), class: 'btn btn-primary btn-sm' %>&nbsp;
-					<%= link_to 'Edit', edit_user_path(user), class: 'btn btn-primary btn-sm' %>
+					<%= link_to 'Details', admin_user_path(user), class: 'btn btn-primary btn-sm' %>&nbsp;
+					<%= link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-primary btn-sm' %>
 				</td>
 			</tr>
 		<% end %>

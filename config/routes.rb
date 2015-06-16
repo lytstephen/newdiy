@@ -12,6 +12,20 @@ Rails.application.routes.draw do
 
   get 'categories/index'
 
+  namespace :admin do
+    get :index
+    get :upload_course
+    resources :categories
+    resources :courses do
+      get :manage, on: :collection
+      get :remove_featured, on: :member
+      get :remove_image1, on: :member
+      get :remove_image2, on: :member
+    end
+    resources :users
+    resources :orders, only: [:index, :show]
+  end
+
   resources :categories
 
   resources :orders do
@@ -34,7 +48,6 @@ Rails.application.routes.draw do
 
   resources :courses do
     get :manage, on: :collection
-    get :admin_manage, on: :collection
     get :admin_upload, on: :collection
     get :remove_featured, on: :member
     get :remove_image1, on: :member
@@ -44,7 +57,6 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
-  get 'admin' => 'pages#admin'
   get 'about' => 'pages#about'
   get 'faq' => 'pages#faq'
   get 'contact' => 'pages#contact'
