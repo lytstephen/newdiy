@@ -1,10 +1,6 @@
 <% @page_title = 'CONFIRM YOUR ORDER' %>
 
-<ol class="breadcrumb text-center">
-  <li><%= link_to 'YOUR CART', cart_orders_path %></li>
-  <li><%= link_to 'ORDER INFORMATION', checkout_order_path(@order) %></li>
-  <li class="active">CONFIRM YOUR ORDER</li>
-</ol>
+<%= render 'progress_bar' %>
 
 <h4>Order Details</h4>
 

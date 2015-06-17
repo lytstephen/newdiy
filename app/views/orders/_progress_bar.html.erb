@@ -1,0 +1,28 @@
+<ol class="breadcrumb text-center">
+  <li><%= current_page?(action: 'cart') ? 'YOUR CART' : (link_to 'YOUR CART', cart_orders_path) %></li>
+
+  <% if user_signed_in? %>
+
+  	<li>
+  		<%= current_page?(checkout_order_path(@order)) ? 
+  			'ORDER INFORMATION' : 
+  			(link_to 'ORDER INFORMATION', checkout_order_path(@order)) %>
+  	</li>
+
+  <% else %>
+
+		<li>
+			<%= current_page?(checkout_signup_order_path(@order)) ? 
+				'ORDER INFORMATION' : 
+				(link_to 'ORDER INFORMATION', checkout_signup_order_path(@order)) %>
+		</li>
+
+  <% end %>
+
+  <li>
+  	<%= current_page?(confirm_order_path(@order)) ? 
+			'CONFIRM YOUR ORDER' : 
+			(link_to 'CONFIRM YOUR ORDER', confirm_order_path(@order)) %>
+  </li>
+
+</ol>

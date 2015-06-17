@@ -26,8 +26,7 @@
 				<td>$<%= course.earnings %></td>
 				<td><%= course.approved ? 'yes' : 'no' %></td>
 				<td><%= course.visibility ? 'yes' : 'no' %></td>
-				<td><%= link_to 'Details', course_path(course), 
-					target: '_blank', class: 'btn btn-primary btn-sm' %>
+				<td><%= link_to 'Details', course_path(course), class: 'btn btn-primary btn-sm' %>
 					<%= link_to 'Edit', edit_admin_course_path(course), class: 'btn btn-primary btn-sm' %>
 				</td>
 			</tr>
