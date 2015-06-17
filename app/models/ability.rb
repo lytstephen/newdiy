@@ -4,11 +4,13 @@ class Ability
   def initialize(user)
 
     user ||= User.new # guest user (not logged in)
-    can :read, Course
 
     if user.persisted?
-      can :write, Course, user_id: user.id
-      can :read, User, user_id: user.id
+      can :manage, Course, user_id: user.id
+      can :manage, User, user_id: user.id
+      can :manage, LineItem, :course => { user_id: user.id }
+      can :purchase_history, Order, user_id: user.id
+      can :read, Order, user_id: user.id
     end
 
     if user.admin?

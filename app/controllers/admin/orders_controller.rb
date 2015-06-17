@@ -3,7 +3,7 @@ class Admin::OrdersController < ApplicationController
   before_action :set_order, only: [:show]
 
   def index
-    @orders = Order.all.order('created_at DESC')
+    @orders = Order.where(completed: true).order('created_at DESC')
   end
 
   def show

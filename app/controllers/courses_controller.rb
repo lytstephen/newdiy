@@ -1,5 +1,7 @@
 class CoursesController < ApplicationController
 
+  load_and_authorize_resource except: [:index, :filter_by_cat, :show]
+
   before_action :set_course, only: [:show, :edit, :update, 
                                     :remove_featured, :remove_image1, :remove_image2]
 

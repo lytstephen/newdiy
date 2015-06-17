@@ -4,7 +4,7 @@ class AdminController < ApplicationController
     @courses = Course.all.order('created_at DESC').take(3)
     @users = User.all.order('created_at DESC').take(3)
     @categories = Category.all.take(4)
-    @orders = Order.all.order('created_at DESC').take(3)
+    @orders = Order.where(completed: true).order('created_at DESC').take(3)
   end
 
   def manage_courses

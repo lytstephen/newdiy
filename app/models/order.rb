@@ -8,6 +8,8 @@ class Order < ActiveRecord::Base
                         :billing_add1, :billing_city, :billing_country,
                         on: [:update]
 
+  validates_presence_of :pmt_method, on: [:complete]
+
   def order_total
     order_total = 0
     self.line_items.each do |line_item|

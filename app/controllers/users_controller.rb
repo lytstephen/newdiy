@@ -1,17 +1,17 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:purchased_courses]
+  # before_action :set_user, only: [:purchased_courses]
 
   def dashboard
-    @courses = current_user.courses.order('created_at DESC').take(3)
-    @line_items_to_ship = current_user.sold_line_items.where(
-      item_type: 'materials', shipping_status: 'pending'
-    )
-    @purchases = current_user.purchases.take(3)
-  end
-
-  def purchased_courses
-    @orders = @user.purchases.order('created_at')
+    if !user_signed_in?
+      redirect_to new_user_session_path, alert: 'You need to sign in first.'
+    else
+      @courses = current_user.courses.order('created_at DESC').take(3)
+      @line_items_to_ship = current_user.sold_line_items.where(
+        item_type: 'materials', shipping_status: 'pending'
+      )
+      @purchases = current_user.purchases.take(3)
+    end
   end
 
   private
@@ -28,10 +28,6 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find(params[:id])
-    end
-
-    def set_order
-      @order = Order.find(cookies[:order_id])
     end
 
 end

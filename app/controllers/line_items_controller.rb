@@ -1,5 +1,7 @@
 class LineItemsController < ApplicationController
 
+  load_and_authorize_resource only: [:index, :show, :delete, :sold, :destroy]
+
   before_action :assign_course_order, 
     only: [:create_video_line_item, :create_materials_line_item]
 

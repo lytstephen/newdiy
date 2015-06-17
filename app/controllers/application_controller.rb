@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user.admin === true
-      request.env['omniauth.origin'] || admin_path || root_path
+      request.env['omniauth.origin'] || admin_index_path || root_path
     else
       request.env['omniauth.origin'] || dashboard_users_path || root_path
     end

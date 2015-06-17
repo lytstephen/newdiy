@@ -1,14 +1,18 @@
 class OrdersController < ApplicationController
+
+  load_and_authorize_resource only: [:purchase_history, :show]
   
   before_action :set_order, only: [:show, :update, :checkout, :checkout_signup, :paid, :complete]
+
+  def purchase_history
+    @purchases = current_user.purchases
+  end
 
   def show
     
   end
 
-  def edit
-  end
-
+  # checkout update order information
   def update
     if @order.update(order_params)
       redirect_to confirm_order_path(@order)
@@ -18,17 +22,6 @@ class OrdersController < ApplicationController
       else
         render 'checkout_signup'
       end
-    end
-  end
-
-  def complete
-    @order.pmt_status = 'paid'
-    @order.completed = true
-    if @order.update(order_params)
-      redirect_to success_orders_path
-      cookies.delete(:order_id)
-    else
-      render 'confirm_order', notice: 'Order Failed.'
     end
   end
 
@@ -74,8 +67,15 @@ class OrdersController < ApplicationController
 
   end
 
-  def purchase_history
-    @purchases = current_user.purchases
+  def complete
+    @order.pmt_status = 'paid'
+    @order.completed = true
+    if @order.update(order_params)
+      redirect_to success_orders_path
+      cookies.delete(:order_id)
+    else
+      render 'confirm_order', notice: 'Order Failed.'
+    end
   end
 
   private
