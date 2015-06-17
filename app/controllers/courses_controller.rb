@@ -13,8 +13,12 @@ class CoursesController < ApplicationController
   end
 
   def filter_by_cat
-    @category = Category.find(params[:category_id])
-    @courses = @category.courses
+    if params[:category_id].blank?
+      @courses = Course.all.order('created_at DESC')
+    else
+      @category = Category.find(params[:category_id])
+      @courses = @category.courses.order('created_at DESC')
+    end
     respond_to do |format|
       format.html { redirect_to courses_path }
       format.js { @current_category = @category }
