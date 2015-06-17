@@ -47,14 +47,15 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    @user = current_user
     @order = Order.find(params[:id])
-    # @order.line_items.each do |line_item|
-    #   if line_item.item_type = 'video'
-    #     render 'checkout_signup', alert: 'You cannot checkout as Guest when purchasing video. 
-    #       Please login or signup first.'
-    #   end
-    # end
+    if user_signed_in? == false
+      @order.line_items.each do |line_item|
+        if line_item.item_type == 'video'
+          redirect_to new_user_session_path, 
+            alert: 'You cannot purchase video as Guest. Please signup or login first.'
+        end
+      end
+    end
   end
 
   def purchase_history
