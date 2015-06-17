@@ -3,28 +3,39 @@
 <%= render 'users/user_side_nav' %>
 
 <div class="well col-md-9">
-	<table class="table table-striped">
-		<tr>
-			<th>Order Date</th>
-			<th>Course Title</th>
-			<th>Item</th>
-			<th>Qty</th>
-			<th>Unit Price</th>
-			<th>Subtotal</th>
-			<th>Payment</th>
-			<th>Shipping Status</th>
-		</tr>
-		<tr>
-			<td><%= @order.created_at.to_date %></td>
-			<td><%= truncate @line_item.course.title, length: 20, omission: '...' %></td>
-			<td><%= @line_item.item_type %></td>
-			<td><%= @line_item.quantity %></td>
-			<td>$<%= @line_item.unit_price %></td>
-			<td>$<%= @line_item.quantity * @line_item.unit_price %></td>
-			<td><%= @order.pmt_status %></td>
-			<td><%= @line_item.shipping_status %></td>
-		</tr>
-	</table>
+
+	<%= form_for @line_item do |f| %>
+
+		<table class="table table-striped">
+			<tr>
+				<th>Order Date</th>
+				<th>Course Title</th>
+				<th>Item</th>
+				<th>Qty</th>
+				<th>Unit Price</th>
+				<th>Subtotal</th>
+				<th>Payment</th>
+				<th>Shipping Status</th>
+				<th></th>
+			</tr>
+			<tr>
+				<td><%= @order.created_at.to_date %></td>
+				<td><%= truncate @line_item.course.title, length: 20, omission: '...' %></td>
+				<td><%= @line_item.item_type %></td>
+				<td><%= @line_item.quantity %></td>
+				<td>$<%= @line_item.unit_price %></td>
+				<td>$<%= @line_item.quantity * @line_item.unit_price %></td>
+				<td><%= @order.pmt_status %></td>
+				<td><%= f.select :shipping_status,
+					options_for_select([['Pending', 'pending'], ['Shipped', 'shipped'], ['Refunded', 'refunded']],
+					@line_item.shipping_status) %></td>
+				<td><%= f.submit 'Update', class: 'btn btn-primary btn-sm' %></td>
+			</tr>
+		</table>
+
+		
+
+	<% end %>	
 
 	<section class="row">&nbsp;</section>
 

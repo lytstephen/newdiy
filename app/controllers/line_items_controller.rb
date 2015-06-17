@@ -1,11 +1,11 @@
 class LineItemsController < ApplicationController
 
-  load_and_authorize_resource only: [:index, :show, :sold]
+  load_and_authorize_resource only: [:index, :show, :update, :sold]
 
   before_action :assign_course_order, 
     only: [:create_video_line_item, :create_materials_line_item]
 
-  before_action :set_line_item, only: [:add_material, :subtract_material, :show]
+  before_action :set_line_item, only: [:add_material, :subtract_material, :show, :update]
   before_action :set_order, only: [:add_material, :subtract_material]
 
   def index
@@ -14,6 +14,14 @@ class LineItemsController < ApplicationController
 
   def show
     @order = @line_item.order
+  end
+
+  def update
+    if @line_item.update(line_item_params)
+      redirect_to line_item_path(@line_item), notice: 'Update Successful!'
+    else
+      redirect_to line_item_path(@line_item), alert: 'Update unsuccessful!'
+    end
   end
 
   def sold
@@ -110,6 +118,10 @@ class LineItemsController < ApplicationController
   end
 
   private
+
+    def line_item_params
+      params.require(:line_item).permit(:shipping_status)
+    end
 
     def set_line_item
       @line_item = LineItem.find(params[:id])

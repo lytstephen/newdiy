@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
   post 'create_video_line_item' => 'line_items#create_video_line_item'
   post 'create_materials_line_item' => 'line_items#create_materials_line_item'
-  resources :line_items, only: [:index, :show, :destroy] do
+  resources :line_items, only: [:index, :show, :update, :destroy] do
     get :add_material, on: :member
     get :subtract_material, on: :member
     get :sold, on: :collection
