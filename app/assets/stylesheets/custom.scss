@@ -105,10 +105,15 @@ html, body {
 
 h1, h2, h3, h4, h5, h6 {
 	color: #508EC7;
+  margin-bottom: 15px;
 }
 
 hr {
   margin-top: 10px;
+}
+
+hr.wide {
+  margin: 25px 0;
 }
 
 #footer #copyright {
