@@ -1,6 +1,6 @@
 class LineItemsController < ApplicationController
 
-  load_and_authorize_resource only: [:index, :show, :delete, :sold, :destroy]
+  load_and_authorize_resource only: [:index, :show, :sold]
 
   before_action :assign_course_order, 
     only: [:create_video_line_item, :create_materials_line_item]
@@ -16,12 +16,18 @@ class LineItemsController < ApplicationController
     @order = @line_item.order
   end
 
-  def delete
-    
-  end
-
   def sold
     @line_items = current_user.sold_line_items.order('item_type, shipping_status')
+  end
+
+  def destroy
+    @line_item = LineItem.find(params[:id])
+    @line_item.destroy
+    if @line_item.order.line_items.length === 0
+      @line_item.order.destroy
+      cookies.delete(:order_id)
+    end
+    redirect_to cart_orders_path, notice: 'Item successfully removed'
   end
 
   def create_video_line_item
@@ -101,16 +107,6 @@ class LineItemsController < ApplicationController
       end
 
     end
-  end
-
-  def destroy
-    @line_item = LineItem.find(params[:id])
-    @line_item.destroy
-    if @line_item.order.line_items.length === 0
-      @line_item.order.destroy
-      cookies.delete(:order_id)
-    end
-    redirect_to cart_orders_path, notice: 'Item successfully removed'
   end
 
   private

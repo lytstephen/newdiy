@@ -12,6 +12,20 @@ class OrdersController < ApplicationController
     
   end
 
+  def cart
+    if cookies[:order_id]
+      @order = Order.find(cookies[:order_id])
+    end
+  end
+
+  def checkout
+    @order.update_attribute('user_id', current_user.id)
+  end
+
+  def checkout_signup
+
+  end
+
   # checkout update order information
   def update
     if @order.update(order_params)
@@ -23,24 +37,6 @@ class OrdersController < ApplicationController
         render 'checkout_signup'
       end
     end
-  end
-
-  def cart
-    if cookies[:order_id]
-      @order = Order.find(cookies[:order_id])
-    end
-  end
-
-  def checkout
-    @order.user_id = current_user.id
-    @order.first_name = current_user.first_name
-    @order.last_name = current_user.last_name
-    @order.email = current_user.email
-    @order.save
-  end
-
-  def checkout_signup
-
   end
 
   def confirm
@@ -57,10 +53,11 @@ class OrdersController < ApplicationController
     end
 
     # if shipping address not filled and theres materials in the order
-    if @order.shipping_add1.blank? and @order.billing_same == false
+    if @order.shipping_add1.blank? and @order.billing_same != true
       @order.line_items.each do |line_item|
         if line_item.item_type = 'materials'
-          redirect_to :back, alert: 'Shipping Address Required for Materials Orders'
+          redirect_to (user_signed_in? ? checkout_order_path : checkout_signup_order_path),
+            alert: 'Shipping Address Required for Materials Orders'
         end
       end
     end
