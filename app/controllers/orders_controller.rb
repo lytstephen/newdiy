@@ -13,7 +13,11 @@ class OrdersController < ApplicationController
     if @order.update(order_params)
       redirect_to confirm_order_path(@order)
     else
-      render 'checkout'
+      if user_signed_in?
+        render 'checkout'
+      else
+        render 'checkout_signup'
+      end
     end
   end
 
@@ -48,6 +52,8 @@ class OrdersController < ApplicationController
 
   def confirm
     @order = Order.find(params[:id])
+
+    # if user not logged in and theres videos in the order
     if user_signed_in? == false
       @order.line_items.each do |line_item|
         if line_item.item_type == 'video'
@@ -56,6 +62,16 @@ class OrdersController < ApplicationController
         end
       end
     end
+
+    # if shipping address not filled and theres materials in the order
+    if @order.shipping_add1.blank? and @order.billing_same == false
+      @order.line_items.each do |line_item|
+        if line_item.item_type = 'materials'
+          redirect_to :back, alert: 'Shipping Address Required for Materials Orders'
+        end
+      end
+    end
+
   end
 
   def purchase_history
