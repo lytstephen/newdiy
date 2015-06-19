@@ -125,7 +125,7 @@ hr.wide {
 .jumbotron {
 		text-align: center;
 		height:400px;
-    background-image: url(/assets/banner.png);
+    background-image: image-url("banner.png");
     margin: 0px;
     background-position: 0% 25%;
     background-size: cover;
