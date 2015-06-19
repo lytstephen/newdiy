@@ -26,24 +26,27 @@
 
 		<section class="row">&nbsp;</section>
 
-		<section class="row">
+		<section class="row modalphotos">
 			<div class="col-md-4 text-center">
 				<% unless @course.featured_image.blank? %>
-					<%= image_tag @course.featured_image.url(:thumbnail), class: 'img-thumbnail center' %>
+					<a href="#"><%= image_tag @course.featured_image.url(:thumbnail), 
+						class: 'img-thumbnail center course_image' %></a>
 				<% else %>
 					<img class="img img-thumbnail" src="http://placehold.it/180x180?text=No+Image" />
 				<% end %>
 			</div>
 			<div class="col-md-4 text-center">
 				<% unless @course.image1.blank? %>
-					<%= image_tag @course.image1.url(:thumbnail), class: 'img-thumbnail center' %>
+					<a href="#"><%= image_tag @course.image1.url(:thumbnail), 
+						class: 'img-thumbnail center course_image' %></a>
 				<% else %>
 					<img class="img img-thumbnail" src="http://placehold.it/180x180?text=No+Image" />
 				<% end %>
 			</div>
 			<div class="col-md-4 text-center">
 				<% unless @course.image2.blank? %>
-					<%= image_tag @course.image2.url(:thumbnail), class: 'img-thumbnail center' %>
+					<a href="#"><%= image_tag @course.image2.url(:thumbnail), 
+						class: 'img-thumbnail center course_image' %></a>
 				<% else %>
 					<img class="img img-thumbnail" src="http://placehold.it/180x180?text=No+Image" />
 				<% end %>
